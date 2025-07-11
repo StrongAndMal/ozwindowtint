@@ -1,53 +1,46 @@
 import { useState, useEffect } from "react";
 import ownerPortrait from "@/assets/owner-portrait.jpg";
-import about1 from "@/AboutPics/_ (4).jpeg";
-import about2 from "@/AboutPics/WINDOW TINTING IMPROVES THE SAFETY OF YOUR VEHICLE AND PASSENGERS.jpeg";
-import about3 from "@/AboutPics/ИИ генерации для детейлинга.jpeg";
-import about4 from "@/AboutPics/Нанесение тонировки ИИ генерация.jpeg";
-import about5 from "@/AboutPics/Window tint Kitchener.jpeg";
-import about6 from "@/AboutPics/WINDOW TINTING is an EXCELLENT OPTION.jpeg";
+
+const ownerPhotos = [
+  {
+    src: ownerPortrait, // Keep the original photo as first
+    alt: "Oscar Moran - Working on a vehicle",
+    description: "Oscar working on a vehicle",
+  },
+  {
+    src: "/AboutPics/_ (4).jpeg",
+    alt: "Oscar Moran - Professional portrait",
+    description: "Professional portrait",
+  },
+  {
+    src: "/AboutPics/WINDOW TINTING IMPROVES THE SAFETY OF YOUR VEHICLE AND PASSENGERS.jpeg",
+    alt: "Oscar Moran - In the shop",
+    description: "In the shop",
+  },
+  {
+    src: "/AboutPics/ИИ генерации для детейлинга.jpeg",
+    alt: "Oscar Moran - With customer",
+    description: "With customer",
+  },
+  {
+    src: "/AboutPics/Нанесение тонировки ИИ генерация.jpeg",
+    alt: "Oscar Moran - Working on tint",
+    description: "Working on tint",
+  },
+  {
+    src: "/AboutPics/Window tint Kitchener.jpeg",
+    alt: "Oscar Moran - Shop overview",
+    description: "Shop overview",
+  },
+  {
+    src: "/AboutPics/WINDOW TINTING is an EXCELLENT OPTION.jpeg",
+    alt: "Oscar Moran - Window tinting",
+    description: "Window tinting",
+  },
+];
 
 const About = () => {
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
-
-  // Use all uploaded images for the ownerPhotos array
-  const ownerPhotos = [
-    {
-      src: ownerPortrait, // Keep the original photo as first
-      alt: "Oscar Moran - Working on a vehicle",
-      description: "Oscar working on a vehicle",
-    },
-    {
-      src: about1,
-      alt: "Oscar Moran - Professional portrait",
-      description: "Professional portrait",
-    },
-    {
-      src: about2,
-      alt: "Oscar Moran - In the shop",
-      description: "In the shop",
-    },
-    {
-      src: about3,
-      alt: "Oscar Moran - With customer",
-      description: "With customer",
-    },
-    {
-      src: about4,
-      alt: "Oscar Moran - Working on tint",
-      description: "Working on tint",
-    },
-    {
-      src: about5,
-      alt: "Oscar Moran - Shop overview",
-      description: "Shop overview",
-    },
-    {
-      src: about6,
-      alt: "Oscar Moran - Window tinting",
-      description: "Window tinting",
-    },
-  ];
 
   // Auto-advance slideshow
   useEffect(() => {
@@ -58,7 +51,7 @@ const About = () => {
     }, 4000); // Change photo every 4 seconds
 
     return () => clearInterval(interval);
-  }, [ownerPhotos.length]);
+  }, []);
 
   // Handle manual navigation
   const goToPhoto = (index) => {

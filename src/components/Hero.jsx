@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useState, useEffect, useRef } from "react";
-import heroVideo from "@/assets/Videos/ffd232571289d5c2befbc5840f4cd984.mp4";
+
+const HERO_VIDEO_PATH = "/Videos/ffd232571289d5c2befbc5840f4cd984.mp4";
 
 const Hero = () => {
   const [isVideoVisible, setIsVideoVisible] = useState(true);
@@ -52,7 +53,7 @@ const Hero = () => {
             isVideoVisible ? "opacity-100" : "opacity-0"
           }`}
         >
-          <source src={heroVideo} type="video/mp4" />
+          <source src={HERO_VIDEO_PATH} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -63,7 +64,7 @@ const Hero = () => {
           isVideoVisible ? "opacity-0" : "opacity-100"
         }`}
         style={{
-          backgroundImage: `url(${heroVideo})`,
+          backgroundImage: `url(${HERO_VIDEO_PATH})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
