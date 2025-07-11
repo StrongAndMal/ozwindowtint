@@ -1,0 +1,170 @@
+@import url("https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Space+Grotesk:wght@300..700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 220 25% 12%; /* #14213d - Dark blue background */
+    --foreground: 0 0% 100%; /* #FFFFFF - White text */
+
+    --card: 220 25% 12%; /* #14213d - Dark blue for cards */
+    --card-foreground: 0 0% 100%; /* #FFFFFF - White text on cards */
+
+    --popover: 220 25% 12%; /* #14213d - Dark blue for popovers */
+    --popover-foreground: 0 0% 100%; /* #FFFFFF - White text on popovers */
+
+    --primary: 35 100% 52%; /* #FCA311 - Orange primary */
+    --primary-foreground: 0 0% 0%; /* #000000 - Black text on orange */
+    --primary-glow: 35 100% 62%; /* Lighter orange for glow effects */
+
+    --secondary: 0 0% 90%; /* #E5E5E5 - Light gray secondary */
+    --secondary-foreground: 0 0% 0%; /* #000000 - Black text on light gray */
+
+    --muted: 220 25% 15%; /* Slightly lighter dark blue for muted elements */
+    --muted-foreground: 0 0% 100%; /* #FFFFFF - White text for muted elements */
+
+    --accent: 35 100% 52%; /* #FCA311 - Orange accent */
+    --accent-foreground: 0 0% 0%; /* #000000 - Black text on orange */
+
+    --destructive: 0 84% 60%; /* Red for destructive actions */
+    --destructive-foreground: 0 0% 100%; /* #FFFFFF - White text on red */
+
+    --border: 220 25% 20%; /* Slightly lighter dark blue for borders */
+    --input: 220 25% 15%; /* Dark blue for inputs */
+    --ring: 35 100% 52%; /* #FCA311 - Orange ring focus */
+
+    /* Chrome window tinting specific colors */
+    --glass-dark: 220 25% 12%; /* #14213d - Dark blue */
+    --glass-medium: 220 25% 12%; /* #14213d - Dark blue */
+    --glass-light: 0 0% 90%; /* #E5E5E5 - Light gray */
+    --chrome-silver: 0 0% 90%; /* #E5E5E5 - Light gray */
+    --chrome-accent: 35 100% 52%; /* #FCA311 - Orange */
+    --chrome-blue: 220 25% 24%; /* #14213d - Dark blue */
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(var(--primary)),
+      hsl(var(--primary-glow))
+    );
+    --gradient-glass: linear-gradient(
+      135deg,
+      hsl(var(--glass-dark)),
+      hsl(var(--glass-medium))
+    );
+    --gradient-hero: linear-gradient(
+      135deg,
+      hsl(var(--glass-dark)) 0%,
+      hsl(var(--chrome-blue)) 100%
+    );
+    --gradient-card: linear-gradient(
+      145deg,
+      hsl(var(--card)) 0%,
+      hsl(var(--accent)) 100%
+    );
+    --gradient-chrome: linear-gradient(
+      135deg,
+      hsl(var(--glass-dark)) 0%,
+      hsl(var(--glass-medium)) 50%,
+      hsl(var(--chrome-silver)) 100%
+    );
+
+    /* Shadows */
+    --shadow-glass: 0 8px 32px hsl(var(--primary) / 0.25);
+    --shadow-card: 0 4px 16px hsl(var(--primary) / 0.15);
+    --shadow-hover: 0 12px 40px hsl(var(--primary) / 0.3);
+    --shadow-chrome: 0 4px 20px hsl(0 0% 0% / 0.5);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 25% 12%; /* #14213d - Dark blue */
+    --foreground: 0 0% 100%; /* #FFFFFF - White text */
+
+    --card: 220 25% 12%; /* #14213d - Dark blue */
+    --card-foreground: 0 0% 100%; /* #FFFFFF - White text */
+
+    --popover: 220 25% 12%; /* #14213d - Dark blue */
+    --popover-foreground: 0 0% 100%; /* #FFFFFF - White text */
+
+    --primary: 35 100% 52%; /* #FCA311 - Orange */
+    --primary-foreground: 0 0% 0%; /* #000000 - Black text on orange */
+
+    --secondary: 0 0% 90%; /* #E5E5E5 - Light gray */
+    --secondary-foreground: 0 0% 0%; /* #000000 - Black text on light gray */
+
+    --muted: 220 25% 15%; /* Slightly lighter dark blue */
+    --muted-foreground: 0 0% 100%; /* #FFFFFF - White text for muted elements */
+
+    --accent: 35 100% 52%; /* #FCA311 - Orange */
+    --accent-foreground: 0 0% 0%; /* #000000 - Black text on orange */
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 25% 20%; /* Slightly lighter dark blue */
+    --input: 220 25% 15%; /* Dark blue for inputs */
+    --ring: 35 100% 52%; /* #FCA311 - Orange ring focus */
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Mukta", sans-serif;
+  }
+
+  /* Ensure all headings and paragraphs are white */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-white;
+  }
+
+  p {
+    @apply text-white;
+  }
+
+  /* Ensure text-muted-foreground is also white for better visibility */
+  .text-muted-foreground {
+    @apply text-white;
+  }
+}
