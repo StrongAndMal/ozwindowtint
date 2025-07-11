@@ -53,8 +53,8 @@ src/
 1. **Clone the repo:**
 
    ```bash
-   git clone https://github.com/yourusername/ozwindowtint-landing-page.git
-   cd ozwindowtint-landing-page
+   git clone https://github.com/yourusername/ozwindowtint.git
+   cd ozwindowtint
    ```
 
 2. **Install dependencies:**
@@ -75,6 +75,28 @@ src/
 
 5. **Open in your browser:**
    - Visit [http://localhost:5173](http://localhost:5173)
+
+---
+
+## 🌐 Deployment
+
+### GitHub Pages (Recommended)
+
+This project is configured for automatic deployment to GitHub Pages:
+
+1. **Push your changes to the main branch**
+2. **GitHub Actions will automatically build and deploy**
+3. **Your site will be available at:** `https://yourusername.github.io/ozwindowtint/`
+
+### Manual Deployment
+
+If you prefer manual deployment:
+
+```bash
+npm run deploy
+```
+
+This will build the project and deploy it to the `gh-pages` branch.
 
 ---
 
