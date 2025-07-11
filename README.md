@@ -1,73 +1,103 @@
-# Welcome to your Lovable project
+# OZWindowTint Landing Page
 
-## Project info
+Welcome to the official repository for **OZWindowTint** — a modern, responsive landing page and gallery for a professional window tinting business. This project is built with React (Vite), TailwindCSS, and a focus on clean UI/UX, accessibility, and real-world business needs.
 
-**URL**: https://lovable.dev/projects/fae20b59-555c-44eb-87ba-173834972a7c
+---
 
-## How can I edit this code?
+## 🚗 About OZWindowTint
 
-There are several ways of editing your application.
+OZWindowTint is a family-owned, community-trusted business specializing in automotive, residential, and commercial window tinting. Our site is designed to showcase our work, make it easy for customers to get in touch, and highlight our values of quality, honesty, and craftsmanship.
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/fae20b59-555c-44eb-87ba-173834972a7c) and start prompting.
+## ✨ Features
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Modern, Responsive Design:** Built with React and TailwindCSS for a seamless experience on all devices.
+- **Full-Screen Google Map:** Shows business location with custom marker and info window.
+- **Dynamic Gallery:** Before/after carousel with real and placeholder images, auto-advancing and manual navigation.
+- **Owner Story:** Meet the owner section with a photo carousel and personal story.
+- **Contact Form:** Clean, accessible, and minimal form for quotes and inquiries, with validation and feedback.
+- **Footer:** Social links (with brand icons), payment methods, and business info.
+- **Accessibility:** Keyboard navigation, ARIA labels, and color contrast.
+- **Easy Customization:** All images and text are easy to update for your business needs.
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🛠️ Tech Stack
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- **React (Vite)**
+- **TailwindCSS**
+- **JavaScript (no TypeScript)**
+- **Shadcn UI, Radix, and modern UI patterns**
+- **Google Maps API**
+- **Sonner for notifications**
 
-Follow these steps:
+---
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 📁 Project Structure
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+src/
+  components/      # All main React components (Hero, About, Gallery, Contact, Footer, etc.)
+  assets/          # Images and videos for gallery and about sections
+  cards/           # SVGs for payment method icons
+  social-icons-master/ # SVGs for social media icons (color and black)
+  aboutpics/       # Owner and shop photos
+  ...
 ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🚀 Getting Started
 
-**Use GitHub Codespaces**
+1. **Clone the repo:**
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+   ```bash
+   git clone https://github.com/yourusername/ozwindowtint-landing-page.git
+   cd ozwindowtint-landing-page
+   ```
 
-## What technologies are used for this project?
+2. **Install dependencies:**
 
-This project is built with:
+   ```bash
+   npm install
+   ```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+3. **Set up environment variables:**
 
-## How can I deploy this project?
+   - Copy `.env.example` to `.env` and fill in your Google Maps API key and business info.
 
-Simply open [Lovable](https://lovable.dev/projects/fae20b59-555c-44eb-87ba-173834972a7c) and click on Share -> Publish.
+4. **Run the development server:**
 
-## Can I connect a custom domain to my Lovable project?
+   ```bash
+   npm run dev
+   ```
 
-Yes, you can!
+5. **Open in your browser:**
+   - Visit [http://localhost:5173](http://localhost:5173)
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+---
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 🖼️ Customization
+
+- **Images:** Replace placeholder images in `src/assets/` and `src/aboutpics/` with your own.
+- **Business Info:** Update `.env` and relevant components for your address, phone, and email.
+- **Services:** Edit the service options in the Contact form and Footer as needed.
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+## 💬 Contact
+
+Questions? Feedback? Reach out via the contact form on the site or email [info@ozwindowtint.com](mailto:info@ozwindowtint.com).
