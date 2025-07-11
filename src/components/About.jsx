@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import ownerPortrait from "@/assets/owner-portrait.jpg";
-import about1 from "@/aboutpics/_ (4).jpeg";
-import about2 from "@/aboutpics/WINDOW TINTING IMPROVES THE SAFETY OF YOUR VEHICLE AND PASSENGERS.jpeg";
-import about3 from "@/aboutpics/ИИ генерации для детейлинга.jpeg";
-import about4 from "@/aboutpics/Нанесение тонировки ИИ генерация.jpeg";
-import about5 from "@/aboutpics/Window tint Kitchener.jpeg";
-import about6 from "@/aboutpics/WINDOW TINTING is an EXCELLENT OPTION.jpeg";
+import about1 from "@/AboutPics/_ (4).jpeg";
+import about2 from "@/AboutPics/WINDOW TINTING IMPROVES THE SAFETY OF YOUR VEHICLE AND PASSENGERS.jpeg";
+import about3 from "@/AboutPics/ИИ генерации для детейлинга.jpeg";
+import about4 from "@/AboutPics/Нанесение тонировки ИИ генерация.jpeg";
+import about5 from "@/AboutPics/Window tint Kitchener.jpeg";
+import about6 from "@/AboutPics/WINDOW TINTING is an EXCELLENT OPTION.jpeg";
 
 const About = () => {
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
