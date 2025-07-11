@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { useState, useEffect, useRef } from "react";
 
-const HERO_VIDEO_PATH = "/Videos/ffd232571289d5c2befbc5840f4cd984.mp4";
+const HERO_VIDEO_PATH =
+  "/ozwindowtint/Videos/ffd232571289d5c2befbc5840f4cd984.mp4";
 
 const Hero = () => {
   const [isVideoVisible, setIsVideoVisible] = useState(true);

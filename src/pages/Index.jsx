@@ -7,6 +7,7 @@ import Reviews from "@/components/Reviews.jsx";
 import Map from "@/components/Map.jsx";
 import Contact from "@/components/Contact.jsx";
 import Footer from "@/components/Footer.jsx";
+import AssetDebugger from "@/components/AssetDebugger.jsx";
 
 const Index = () => {
   return (
@@ -20,6 +21,7 @@ const Index = () => {
       <Map />
       <Contact />
       <Footer />
+      <AssetDebugger />
     </div>
   );
 };
