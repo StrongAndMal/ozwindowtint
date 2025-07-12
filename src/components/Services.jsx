@@ -50,7 +50,7 @@ const Services = () => {
           {services.map((service, index) => (
             <Card
               key={service.title}
-              className="bg-gradient-to-br from-primary/10 to-primary/5 backdrop-blur-sm hover:shadow-hover transition-all duration-300 hover:scale-105"
+              className="bg-gradient-to-br from-primary/10 to-primary/5 transition-all duration-300  md:hover:scale-105"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <CardHeader>

@@ -71,10 +71,7 @@ const About = () => {
   };
 
   return (
-    <section
-      id="about"
-      className="py-20 bg-background relative overflow-hidden"
-    >
+    <section id="about" className="py-20">
       {/* Custom Background Shapes */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Large circle */}
@@ -104,7 +101,7 @@ const About = () => {
             <div className="animate-fade-in relative order-2 lg:order-1">
               {/* Custom Background Shapes for Photo Card */}
               {/* Slideshow Container */}
-              <div className="relative w-full max-w-lg mx-auto rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105">
+              <div className="relative w-full max-w-lg mx-auto rounded-2xl overflow-hidden shadow-2xl lg:hover:shadow-3xl transition-all duration-500 transform lg:hover:scale-105">
                 {/* Photo Display */}
                 <div className="relative h-[500px]">
                   {ownerPhotos.map((photo, index) => (
@@ -145,14 +142,14 @@ const About = () => {
                 {/* Navigation Arrows */}
                 <button
                   onClick={goToPrevious}
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white p-3 rounded-full hover:bg-black/80 transition-all duration-300 z-10 backdrop-blur-sm"
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white p-3 rounded-full lg:hover:bg-black/80 transition-all duration-300 z-10 backdrop-blur-sm"
                   aria-label="Previous photo"
                 >
                   ←
                 </button>
                 <button
                   onClick={goToNext}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white p-3 rounded-full hover:bg-black/80 transition-all duration-300 z-10 backdrop-blur-sm"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white p-3 rounded-full lg:hover:bg-black/80 transition-all duration-300 z-10 backdrop-blur-sm"
                   aria-label="Next photo"
                 >
                   →
@@ -167,7 +164,7 @@ const About = () => {
                       className={`w-4 h-4 rounded-full transition-all duration-300 ${
                         index === currentPhotoIndex
                           ? "bg-white scale-125 shadow-lg"
-                          : "bg-white/50 hover:bg-white/75"
+                          : "bg-white/50 lg:hover:bg-white/75"
                       }`}
                       aria-label={`Go to photo ${index + 1}`}
                     />

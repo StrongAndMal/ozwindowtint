@@ -72,7 +72,7 @@ const Gallery = () => {
           {/* Carousel Container */}
           <div className="relative">
             {/* Main Carousel */}
-            <div className="relative h-96 md:h-[500px] rounded-lg overflow-hidden shadow-glass">
+            <div className="relative h-96 md:h-[500px] rounded-lg overflow-hidden">
               {galleryItems.map((item, index) => (
                 <div
                   key={index}
@@ -148,14 +148,14 @@ const Gallery = () => {
             {/* Navigation Arrows */}
             <button
               onClick={goToPrevious}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition-all duration-300 z-10"
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-3 rounded-full lg:hover:bg-black/70 transition-all duration-300 z-10"
               aria-label="Previous slide"
             >
               ←
             </button>
             <button
               onClick={goToNext}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition-all duration-300 z-10"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-3 rounded-full lg:hover:bg-black/70 transition-all duration-300 z-10"
               aria-label="Next slide"
             >
               →
@@ -170,7 +170,7 @@ const Gallery = () => {
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     index === currentSlide
                       ? "bg-white scale-125"
-                      : "bg-white/50 hover:bg-white/75"
+                      : "bg-white/50 lg:hover:bg-white/75"
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
@@ -185,7 +185,7 @@ const Gallery = () => {
 
           {/* Gallery Stats */}
           <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-gradient-to-br from-primary/10 to-primary/5 backdrop-blur-sm text-center bg-white/10 rounded-2xl shadow-lg p-8 transition-transform duration-200 hover:scale-105 hover:shadow-2xl">
+            <div className="bg-gradient-to-br from-primary/10 to-primary/5 backdrop-blur-sm text-center bg-white/10 rounded-2xl shadow-lg p-8 transition-transform duration-200 lg:hover:scale-105 lg:hover:shadow-2xl">
               <div className="text-6xl font-bold text-primary-glow mb-2">
                 500+
               </div>
@@ -195,7 +195,7 @@ const Gallery = () => {
                 🚗🚗🚗🚗🚗
               </div>
             </div>
-            <div className="bg-gradient-to-br from-primary/10 to-primary/5 backdrop-blur-sm text-center bg-white/10 rounded-2xl shadow-lg p-8 transition-transform duration-200 hover:scale-105 hover:shadow-2xl">
+            <div className="bg-gradient-to-br from-primary/10 to-primary/5 backdrop-blur-sm text-center bg-white/10 rounded-2xl shadow-lg p-8 transition-transform duration-200 lg:hover:scale-105 lg:hover:shadow-2xl">
               <div className="text-6xl font-bold text-primary-glow mb-2">
                 5+
               </div>
@@ -205,7 +205,7 @@ const Gallery = () => {
                 ⭐⭐⭐⭐⭐
               </div>
             </div>
-            <div className="bg-gradient-to-br from-primary/10 to-primary/5 backdrop-blur-sm text-center bg-white/10 rounded-2xl shadow-lg p-8 transition-transform duration-200 hover:scale-105 hover:shadow-2xl">
+            <div className="bg-gradient-to-br from-primary/10 to-primary/5 backdrop-blur-sm text-center bg-white/10 rounded-2xl shadow-lg p-8 transition-transform duration-200 lg:hover:scale-105 lg:hover:shadow-2xl">
               <div className="text-6xl font-bold text-primary-glow mb-2">
                 97%
               </div>

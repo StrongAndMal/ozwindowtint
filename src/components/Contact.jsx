@@ -10,7 +10,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { toast } from "sonner";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -45,12 +44,8 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validateForm()) {
-      toast.error("Please fix the errors in the form");
       return;
     }
-    toast.success("Quote request submitted!", {
-      description: "We'll contact you within 2-4 hours with a custom quote.",
-    });
     setFormData({
       name: "",
       email: "",
@@ -105,13 +100,13 @@ const Contact = () => {
                       <SelectContent className="bg-gray-900 border-none py-2 px-2">
                         <SelectItem
                           value="automotive"
-                          className="text-white px-2 py-3 my-1 transition-all duration-150 hover:bg-white/10 cursor-pointer"
+                          className="text-white px-2 py-3 my-1 transition-all duration-150 lg:hover:bg-white/10 cursor-pointer"
                         >
                           Nano Carbon Puremax Automotive Tint
                         </SelectItem>
                         <SelectItem
                           value="residential"
-                          className="text-white px-2 py-3 my-1 transition-all duration-150 hover:bg-white/10 cursor-pointer"
+                          className="text-white px-2 py-3 my-1 transition-all duration-150 lg:hover:bg-white/10 cursor-pointer"
                         >
                           FXtreme2 Series – Nano Ceramic Film Automotive Tint
                         </SelectItem>
@@ -217,7 +212,7 @@ const Contact = () => {
                   <Button
                     type="submit"
                     size="lg"
-                    className="px-12 py-4 text-lg bg-white text-gray-900 hover:bg-gray-100 font-semibold"
+                    className="px-12 py-4 text-lg bg-white text-gray-900  font-semibold"
                   >
                     Get My Free Quote
                   </Button>

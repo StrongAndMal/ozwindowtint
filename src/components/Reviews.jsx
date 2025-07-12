@@ -109,7 +109,7 @@ const Reviews = () => {
             {duplicatedReviews.map((review, index) => (
               <Card
                 key={`${review.id}-${index}`}
-                className="flex-shrink-0 w-80 md:w-96 bg-gradient-to-br from-primary/10 to-primary/5 backdrop-blur-sm border-primary/20 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 group"
+                className="flex-shrink-0 w-80 md:w-96 bg-gradient-to-br from-primary/10 to-primary/5 backdrop-blur-sm border-primary/20 shadow-xl lg:hover:shadow-2xl transition-all duration-500 lg:hover:scale-105 lg:hover:-translate-y-2 group"
               >
                 <CardContent className="p-6">
                   {/* Review Header */}

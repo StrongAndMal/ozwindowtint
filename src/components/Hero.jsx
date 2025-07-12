@@ -41,7 +41,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 lg:pt-20">
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full">
         <video
@@ -75,23 +75,25 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-hero opacity-80" />
 
       {/* Content */}
-      <div className="relative z-10 text-center text-primary-foreground px-4 animate-fade-in">
-        <h1 className="text-6xl font-bold mb-6 leading-tight">
+      <div className="relative z-10 text-center text-primary-foreground px-4 sm:px-6 lg:px-8 animate-fade-in w-full max-w-6xl mx-auto">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight">
           Tinted With Care.
-          <span className="block text-primary-glow">Driven by Passion.</span>
+          <span className="block text-primary-glow mt-2 sm:mt-3 lg:mt-4">
+            Driven by Passion.
+          </span>
         </h1>
 
-        <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
+        <p className="text-base sm:text-lg lg:text-xl text-white/80 mb-6 sm:mb-8 lg:mb-10 max-w-2xl mx-auto px-4">
           From our garage to yours, we bring precision, pride, and personal
           touch to every tint.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-8 sm:mb-12 lg:mb-16">
           <Button
             variant=""
             size="lg"
             onClick={scrollToContact}
-            className="text-lg px-8 py-4"
+            className="text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 w-full sm:w-auto min-w-[200px]"
           >
             Get Quote
           </Button>
@@ -99,32 +101,34 @@ const Hero = () => {
             variant=""
             size="lg"
             onClick={scrollToGallery}
-            className="text-lg px-8 py-4"
+            className="text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 w-full sm:w-auto min-w-[200px]"
           >
             View Our Work
           </Button>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 max-w-4xl mx-auto px-4">
           <div className="text-center">
-            <div className="text-3xl font-bold text-primary-glow mb-2">5+</div>
-            <div className="text-primary-foreground/80 text-white">
+            <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-glow mb-2">
+              5+
+            </div>
+            <div className="text-primary-foreground/80 text-white text-sm sm:text-base">
               Years Experience
             </div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-primary-glow mb-2">
+            <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-glow mb-2">
               500+
             </div>
-            <div className="text-primary-foreground/80 text-white">
+            <div className="text-primary-foreground/80 text-white text-sm sm:text-base">
               Happy Customers
             </div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-primary-glow mb-2">
+            <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-glow mb-2">
               100%
             </div>
-            <div className="text-primary-foreground/80 text-white">
+            <div className="text-primary-foreground/80 text-white text-sm sm:text-base">
               Satisfaction Guarantee
             </div>
           </div>
