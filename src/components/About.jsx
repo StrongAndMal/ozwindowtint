@@ -8,32 +8,32 @@ const ownerPhotos = [
     description: "Oscar working on a vehicle",
   },
   {
-    src: "/ozwindowtint/AboutPics/_ (4).jpeg",
+    src: "/AboutPics/_ (4).jpeg",
     alt: "Oscar Moran - Professional portrait",
     description: "Professional portrait",
   },
   {
-    src: "/ozwindowtint/AboutPics/WINDOW TINTING IMPROVES THE SAFETY OF YOUR VEHICLE AND PASSENGERS.jpeg",
+    src: "/AboutPics/WINDOW TINTING IMPROVES THE SAFETY OF YOUR VEHICLE AND PASSENGERS.jpeg",
     alt: "Oscar Moran - In the shop",
     description: "In the shop",
   },
   {
-    src: "/ozwindowtint/AboutPics/ИИ генерации для детейлинга.jpeg",
+    src: "/AboutPics/ИИ генерации для детейлинга.jpeg",
     alt: "Oscar Moran - With customer",
     description: "With customer",
   },
   {
-    src: "/ozwindowtint/AboutPics/Нанесение тонировки ИИ генерация.jpeg",
+    src: "/AboutPics/Нанесение тонировки ИИ генерация.jpeg",
     alt: "Oscar Moran - Working on tint",
     description: "Working on tint",
   },
   {
-    src: "/ozwindowtint/AboutPics/Window tint Kitchener.jpeg",
+    src: "/AboutPics/Window tint Kitchener.jpeg",
     alt: "Oscar Moran - Shop overview",
     description: "Shop overview",
   },
   {
-    src: "/ozwindowtint/AboutPics/WINDOW TINTING is an EXCELLENT OPTION.jpeg",
+    src: "/AboutPics/WINDOW TINTING is an EXCELLENT OPTION.jpeg",
     alt: "Oscar Moran - Window tinting",
     description: "Window tinting",
   },
