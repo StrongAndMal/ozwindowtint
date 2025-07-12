@@ -101,7 +101,7 @@ const Reviews = () => {
             ref={tickerRef}
             className="flex gap-6 py-8 animate-scroll"
             style={{
-              animationDuration: "60s",
+              animationDuration: "45s",
               animationIterationCount: "infinite",
               animationTimingFunction: "linear",
             }}
@@ -171,23 +171,23 @@ const Reviews = () => {
         }
 
         .animate-scroll {
-          animation: scroll 60s linear infinite;
+          animation: scroll 45s linear infinite;
         }
 
         .animate-pause {
           animation-play-state: paused;
         }
 
-        /* Responsive adjustments */
+        /* Responsive adjustments - Much faster on mobile */
         @media (max-width: 768px) {
           .animate-scroll {
-            animation-duration: 40s;
+            animation-duration: 25s;
           }
         }
 
         @media (max-width: 480px) {
           .animate-scroll {
-            animation-duration: 30s;
+            animation-duration: 20s;
           }
         }
       `}</style>

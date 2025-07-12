@@ -53,23 +53,6 @@ const About = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Handle manual navigation
-  const goToPhoto = (index) => {
-    setCurrentPhotoIndex(index);
-  };
-
-  const goToPrevious = () => {
-    setCurrentPhotoIndex((prevIndex) =>
-      prevIndex === 0 ? ownerPhotos.length - 1 : prevIndex - 1
-    );
-  };
-
-  const goToNext = () => {
-    setCurrentPhotoIndex((prevIndex) =>
-      prevIndex === ownerPhotos.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
   return (
     <section id="about" className="py-20">
       {/* Custom Background Shapes */}
@@ -99,7 +82,6 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             {/* Photo Section - Left */}
             <div className="animate-fade-in relative order-2 lg:order-1">
-              {/* Custom Background Shapes for Photo Card */}
               {/* Slideshow Container */}
               <div className="relative w-full max-w-lg mx-auto rounded-2xl overflow-hidden shadow-2xl lg:hover:shadow-3xl transition-all duration-500 transform lg:hover:scale-105">
                 {/* Photo Display */}
@@ -139,34 +121,16 @@ const About = () => {
                   ))}
                 </div>
 
-                {/* Navigation Arrows */}
-                <button
-                  onClick={goToPrevious}
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white p-3 rounded-full lg:hover:bg-black/80 transition-all duration-300 z-10 backdrop-blur-sm"
-                  aria-label="Previous photo"
-                >
-                  ←
-                </button>
-                <button
-                  onClick={goToNext}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white p-3 rounded-full lg:hover:bg-black/80 transition-all duration-300 z-10 backdrop-blur-sm"
-                  aria-label="Next photo"
-                >
-                  →
-                </button>
-
-                {/* Photo Indicators */}
+                {/* Photo Indicators - Auto-only */}
                 <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
                   {ownerPhotos.map((_, index) => (
-                    <button
+                    <div
                       key={index}
-                      onClick={() => goToPhoto(index)}
                       className={`w-4 h-4 rounded-full transition-all duration-300 ${
                         index === currentPhotoIndex
                           ? "bg-white scale-125 shadow-lg"
-                          : "bg-white/50 lg:hover:bg-white/75"
+                          : "bg-white/50"
                       }`}
-                      aria-label={`Go to photo ${index + 1}`}
                     />
                   ))}
                 </div>
@@ -194,7 +158,7 @@ const About = () => {
 
               <div className="space-y-6 text-muted-foreground">
                 <p className="text-lg leading-relaxed text-white/80">
-                  I’m Oscar, born and raised in El Salvador. I started tinting
+                  I'm Oscar, born and raised in El Salvador. I started tinting
                   windows as a backyard hobby during COVID, and it quickly grew
                   into a passion. After five years of refining my craft, I
                   opened my own shop built on quality work, honest service, and

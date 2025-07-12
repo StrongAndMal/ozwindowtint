@@ -41,20 +41,6 @@ const Gallery = () => {
     return () => clearInterval(interval);
   }, [galleryItems.length]);
 
-  const goToSlide = (index) => {
-    setCurrentSlide(index);
-  };
-
-  const goToPrevious = () => {
-    setCurrentSlide((prev) =>
-      prev === 0 ? galleryItems.length - 1 : prev - 1
-    );
-  };
-
-  const goToNext = () => {
-    setCurrentSlide((prev) => (prev + 1) % galleryItems.length);
-  };
-
   return (
     <section id="gallery" className="py-20 bg-background">
       <div className="container mx-auto px-4">
@@ -63,7 +49,7 @@ const Gallery = () => {
             Before & After: See the Pure Difference
           </h2>
           <p className="text-lg text-white/80 max-w-3xl mx-auto">
-            It’s more than a look. It’s protection, privacy, and comfort you can
+            It's more than a look. It's protection, privacy, and comfort you can
             feel.
           </p>
         </div>
@@ -145,34 +131,16 @@ const Gallery = () => {
               ))}
             </div>
 
-            {/* Navigation Arrows */}
-            <button
-              onClick={goToPrevious}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-3 rounded-full lg:hover:bg-black/70 transition-all duration-300 z-10"
-              aria-label="Previous slide"
-            >
-              ←
-            </button>
-            <button
-              onClick={goToNext}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-3 rounded-full lg:hover:bg-black/70 transition-all duration-300 z-10"
-              aria-label="Next slide"
-            >
-              →
-            </button>
-
-            {/* Dot Indicators */}
+            {/* Dot Indicators - Auto-only */}
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
               {galleryItems.map((_, index) => (
-                <button
+                <div
                   key={index}
-                  onClick={() => goToSlide(index)}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     index === currentSlide
                       ? "bg-white scale-125"
-                      : "bg-white/50 lg:hover:bg-white/75"
+                      : "bg-white/50"
                   }`}
-                  aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
             </div>
