@@ -11,17 +11,32 @@ const Map = () => {
       setIsLoading(true);
       setError(null);
 
-      // Get environment variables
+      // Get environment variables with better fallbacks
       const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
-      const latitude = parseFloat(import.meta.env.VITE_LATITUDE) || 34.0522;
-      const longitude = parseFloat(import.meta.env.VITE_LONGITUDE) || -118.2437;
+      const latitude = parseFloat(import.meta.env.VITE_LATITUDE) || 33.9164;
+      const longitude = parseFloat(import.meta.env.VITE_LONGITUDE) || -118.3526;
       const businessName = import.meta.env.VITE_BUSINESS_NAME || "OzWindowTint";
       const businessAddress =
         import.meta.env.VITE_BUSINESS_ADDRESS ||
         "13791 Hawthorne Blvd, Hawthorne, CA 90250";
 
+      // Debug logging for development
+      if (import.meta.env.DEV) {
+        console.log("Map Debug Info:", {
+          hasApiKey: !!apiKey,
+          apiKeyLength: apiKey?.length,
+          latitude,
+          longitude,
+          businessName,
+          businessAddress,
+          environment: import.meta.env.MODE,
+        });
+      }
+
       if (!apiKey) {
-        setError("Google Maps API key is not configured");
+        setError(
+          "Google Maps API key is not configured. Please check your environment variables."
+        );
         setIsLoading(false);
         return;
       }
@@ -37,6 +52,11 @@ const Map = () => {
         const { AdvancedMarkerElement } = await loader.importLibrary("marker");
 
         const position = { lat: latitude, lng: longitude };
+
+        // Ensure map element is ready
+        if (!mapRef.current) {
+          throw new Error("Map element not found");
+        }
 
         const map = new Map(mapRef.current, {
           center: position,
@@ -61,6 +81,15 @@ const Map = () => {
           <div class="p-4 max-w-xs">
             <h3 class="font-bold text-lg text-gray-900 mb-2">${businessName}</h3>
             <p class="text-gray-700 text-sm">${businessAddress}</p>
+            <div class="mt-2">
+              <a href="https://maps.google.com/?q=${encodeURIComponent(
+                businessAddress
+              )}" 
+                 target="_blank" 
+                 class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                Get Directions →
+              </a>
+            </div>
           </div>
         `;
 
@@ -96,9 +125,23 @@ const Map = () => {
         };
       } catch (error) {
         console.error("Error loading Google Maps:", error);
-        setError(
-          "Failed to load Google Maps. Please check your internet connection."
-        );
+
+        // More specific error messages
+        let errorMessage =
+          "Failed to load Google Maps. Please check your internet connection.";
+
+        if (error.message?.includes("RefererNotAllowedMapError")) {
+          errorMessage =
+            "Domain not authorized for Google Maps API. Please check domain restrictions.";
+        } else if (error.message?.includes("ApiNotActivatedMapError")) {
+          errorMessage =
+            "Google Maps API not activated. Please enable the Maps JavaScript API.";
+        } else if (error.message?.includes("InvalidKeyMapError")) {
+          errorMessage =
+            "Invalid Google Maps API key. Please check your configuration.";
+        }
+
+        setError(errorMessage);
         setIsLoading(false);
       }
     };
@@ -108,11 +151,30 @@ const Map = () => {
 
   if (error) {
     return (
-      <div className="w-full h-96 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center rounded-lg">
-        <div className="text-center text-gray-600 p-8">
-          <div className="text-4xl mb-4">🗺️</div>
-          <h2 className="text-xl font-bold mb-2">Map Error</h2>
-          <p className="text-sm">{error}</p>
+      <div className="w-full">
+        {/* Title Section */}
+        <div className="text-center mb-8">
+          <h2 className="text-6xl font-bold mb-4 text-white">
+            Visit OzWindow Tint
+          </h2>
+          <p className="text-lg text-white/80 max-w-2xl mx-auto">
+            Drop by. Say hi. Let's get your ride looking right.
+          </p>
+        </div>
+
+        {/* Error State */}
+        <div className="w-full h-96 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center rounded-lg">
+          <div className="text-center text-gray-600 p-8">
+            <div className="text-4xl mb-4">🗺️</div>
+            <h2 className="text-xl font-bold mb-2">
+              Map Temporarily Unavailable
+            </h2>
+            <p className="text-sm mb-4">{error}</p>
+            <div className="text-sm text-gray-500">
+              <p>📍 13791 Hawthorne Blvd, Hawthorne, CA 90250</p>
+              <p>📞 (323) 485-2615</p>
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -126,7 +188,7 @@ const Map = () => {
           Visit OzWindow Tint
         </h2>
         <p className="text-lg text-white/80 max-w-2xl mx-auto">
-          Drop by. Say hi. Let’s get your ride looking right.
+          Drop by. Say hi. Let's get your ride looking right.
         </p>
       </div>
 
