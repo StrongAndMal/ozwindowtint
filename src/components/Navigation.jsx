@@ -137,7 +137,7 @@ const Navigation = () => {
 
         {/* Mobile Menu Overlay */}
         <div
-          className={`lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm transition-all duration-300 z-40 ${
+          className={`lg:hidden fixed inset-0 bg-white transition-all duration-300 z-40 ${
             isMobileMenuOpen
               ? "opacity-100 pointer-events-auto"
               : "opacity-0 pointer-events-none"
