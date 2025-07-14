@@ -143,15 +143,25 @@ const Footer = () => {
             </h3>
             <div className="space-y-2 sm:space-y-3 text-sm sm:text-base text-muted-foreground">
               <div className="leading-relaxed">
-                3791 Hawthorne Blvd,
+                13791 Hawthorne Blvd,
                 <br />
                 Hawthorne, CA 90250
               </div>
-              <div className="lg:hover:text-primary transition-colors duration-200">
+              <div className="lg:hover:text-primary cursor-pointer transition-colors duration-200">
                 (323) 485-2615
               </div>
-              <div className="lg:hover:text-primary transition-colors duration-200">
+              <div className="lg:hover:text-primary cursor-pointer transition-colors duration-200">
                 Osmoran2007@hotmail.com
+              </div>
+              <div className="">
+                Hours of Operation:
+                <br />
+                Monday - Sunday: 8:00 AM - 6:00 PM
+                <br />
+                <br />
+                <span className="font-bold">
+                  We are closed on major holidays.
+                </span>
               </div>
             </div>
           </div>
