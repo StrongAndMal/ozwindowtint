@@ -6,6 +6,7 @@ import discoverIcon from "../cards/discover.svg";
 import facebookIcon from "../social-icons-master/SVG/Color/Facebook.svg";
 import instagramIcon from "../social-icons-master/SVG/Color/Instagram.svg";
 import youtubeIcon from "../social-icons-master/SVG/Color/Youtube.svg";
+import logo from "@/Logo/ChatGPT Image Jul 14, 2025, 11_50_18 AM.png";
 
 const Footer = () => {
   const scrollToSection = (sectionId) => {
@@ -23,9 +24,15 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-4 sm:space-y-6">
             <div>
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-glow">
+              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-glow text-center">
                 OZWindowTint
               </div>
+              <img
+                src={logo}
+                alt="OzWindowTint Logo"
+                className="h-8 md:h-10 w-auto mx-auto mt-1 object-contain"
+                style={{ maxWidth: "80px" }}
+              />
               <p className="text-sm sm:text-base text-white/80 mt-2 sm:mt-3 leading-relaxed">
                 Professional Automotive Window Tinting. Family-Owned &
                 Community-Trusted

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import logo from "@/Logo/ChatGPT Image Jul 14, 2025, 11_50_18 AM.png";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -36,10 +37,19 @@ const Navigation = () => {
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-primary-glow">
+          <Link
+            to="/"
+            className="flex flex-col items-center space-y-1 min-w-[120px]"
+          >
+            <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-primary-glow text-center">
               OzWindowTint
             </div>
+            <img
+              src={logo}
+              alt="OzWindowTint Logo"
+              className="h-8 md:h-10 w-auto mx-auto mt-1 object-contain"
+              style={{ maxWidth: "80px" }}
+            />
           </Link>
 
           {/* Desktop Navigation - Centered */}
