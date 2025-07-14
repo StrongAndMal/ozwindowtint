@@ -106,7 +106,7 @@ const Navigation = () => {
           {/* Mobile Menu Button - Right side */}
           <button
             onClick={toggleMobileMenu}
-            className="lg:hidden p-2 text-foreground transition-colors duration-200 relative z-50 ml-auto"
+            className="lg:hidden p-2 ml-auto bg-background text-foreground rounded-full shadow focus-visible:ring-2 focus-visible:ring-primary focus:outline-none transition-colors duration-200 relative z-[10000]"
             aria-label="Toggle mobile menu"
           >
             <div className="w-6 h-6 flex flex-col justify-center items-center">
@@ -137,7 +137,7 @@ const Navigation = () => {
 
         {/* Mobile Menu Overlay */}
         <div
-          className={`lg:hidden fixed inset-0 bg-white transition-all duration-300 z-40 ${
+          className={`lg:hidden fixed inset-0 bg-background text-foreground transition-all duration-300 z-[9998] ${
             isMobileMenuOpen
               ? "opacity-100 pointer-events-auto"
               : "opacity-0 pointer-events-none"
@@ -147,7 +147,7 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         <div
-          className={`lg:hidden fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl border-l border-border transition-all duration-300 ease-in-out z-50 transform ${
+          className={`lg:hidden fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-background text-foreground shadow-2xl border-l border-border transition-all duration-300 ease-in-out z-[9999] transform ${
             isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
