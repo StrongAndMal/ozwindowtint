@@ -5,6 +5,7 @@ import amexIcon from "../cards/american-express.svg";
 import discoverIcon from "../cards/discover.svg";
 import facebookIcon from "../social-icons-master/SVG/Color/Facebook.svg";
 import instagramIcon from "../social-icons-master/SVG/Color/Instagram.svg";
+import tiktokIcon from "../social-icons-master/SVG/Color/Tik Tok.svg";
 import youtubeIcon from "../social-icons-master/SVG/Color/Youtube.svg";
 import logo from "@/Logo/ChatGPT Image Jul 14, 2025, 11_50_18 AM.png";
 
@@ -24,14 +25,14 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-4 sm:space-y-6">
             <div>
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-glow text-center">
+              {/* <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-glow text-center">
                 OZWindowTint
-              </div>
+              </div> */}
               <img
                 src={logo}
                 alt="OzWindowTint Logo"
-                className="h-8 md:h-10 w-auto mx-auto mt-1 object-contain"
-                style={{ maxWidth: "80px" }}
+                className="h-36 md:h-36 w-auto mx-auto mt-1 object-contain"
+                style={{ maxWidth: "1000px" }}
               />
               <p className="text-sm sm:text-base text-white/80 mt-2 sm:mt-3 leading-relaxed">
                 Professional Automotive Window Tinting. Family-Owned &
@@ -40,24 +41,24 @@ const Footer = () => {
             </div>
             <div>
               <div className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4">
-                Follow OZWindowTint:
+                Follow OzWindowTint:
               </div>
               <div className="flex space-x-4 sm:space-x-6">
                 <a
-                  href="https://facebook.com"
+                  href="https://www.tiktok.com/@ozwindowtint2"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Facebook"
+                  aria-label="TikTok"
                   className="lg:hover:scale-110 transition-transform duration-200"
                 >
                   <img
-                    src={facebookIcon}
-                    alt="Facebook"
+                    src={tiktokIcon}
+                    alt="TikTok"
                     className="w-6 h-6 sm:w-7 sm:h-7"
                   />
                 </a>
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/ozwindowtint2/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram"
@@ -66,19 +67,6 @@ const Footer = () => {
                   <img
                     src={instagramIcon}
                     alt="Instagram"
-                    className="w-6 h-6 sm:w-7 sm:h-7"
-                  />
-                </a>
-                <a
-                  href="https://youtube.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="YouTube"
-                  className="lg:hover:scale-110 transition-transform duration-200"
-                >
-                  <img
-                    src={youtubeIcon}
-                    alt="YouTube"
                     className="w-6 h-6 sm:w-7 sm:h-7"
                   />
                 </a>
