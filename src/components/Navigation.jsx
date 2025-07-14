@@ -35,16 +35,28 @@ const Navigation = () => {
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
+        <div className="flex items-center justify-between h-16 lg:h-20 relative">
+          {/* Logo - Centered on Mobile */}
+          <div className="lg:hidden absolute left-1/2 transform -translate-x-1/2 top-0 pt-2">
+            <Link to="/" className="flex flex-col items-center space-y-1">
+              <img
+                src={logo}
+                alt="OzWindowTint Logo"
+                className="h-14 w-auto object-contain"
+                style={{ maxWidth: "400px" }}
+              />
+            </Link>
+          </div>
+
+          {/* Logo - Desktop */}
           <Link
             to="/"
-            className="flex flex-col items-center space-y-1 min-w-[120px]"
+            className="hidden lg:flex flex-row items-center min-w-[120px]"
           >
             <img
               src={logo}
               alt="OzWindowTint Logo"
-              className="h-20 md:h-20 w-auto px-auto mt-1 object-contain"
+              className="h-20 w-auto object-contain"
               style={{ maxWidth: "500px" }}
             />
           </Link>
