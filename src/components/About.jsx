@@ -8,47 +8,72 @@ const ownerPhotos = [
     description: "Oscar working on a vehicle",
   },
   {
-    src: "/AboutPics/_ (4).jpeg",
-    alt: "Oscar Moran - Professional portrait",
-    description: "Professional portrait",
+    src: "/src/assets/OzWindowTint/DJI_20250712142612_0013_D.jpg",
+    alt: "Oscar Moran - Professional work",
+    description: "Professional work",
   },
   {
-    src: "/AboutPics/WINDOW TINTING IMPROVES THE SAFETY OF YOUR VEHICLE AND PASSENGERS.jpeg",
-    alt: "Oscar Moran - In the shop",
-    description: "In the shop",
+    src: "/src/assets/OzWindowTint/DJI_20250712142623_0014_D.jpg",
+    alt: "Oscar Moran - Shop work",
+    description: "Shop work",
   },
   {
-    src: "/AboutPics/ИИ генерации для детейлинга.jpeg",
-    alt: "Oscar Moran - With customer",
-    description: "With customer",
+    src: "/src/assets/OzWindowTint/DJI_20250712142642_0015_D.jpg",
+    alt: "Oscar Moran - Tinting process",
+    description: "Tinting process",
   },
   {
-    src: "/AboutPics/Нанесение тонировки ИИ генерация.jpeg",
-    alt: "Oscar Moran - Working on tint",
-    description: "Working on tint",
+    src: "/src/assets/OzWindowTint/DJI_20250712142655_0016_D.jpg",
+    alt: "Oscar Moran - Quality work",
+    description: "Quality work",
   },
   {
-    src: "/AboutPics/Window tint Kitchener.jpeg",
+    src: "/src/assets/OzWindowTint/DJI_20250712142732_0017_D.jpg",
+    alt: "Oscar Moran - Professional service",
+    description: "Professional service",
+  },
+  {
+    src: "/src/assets/OzWindowTint/DJI_20250712142905_0020_D.jpg",
+    alt: "Oscar Moran - Window tinting",
+    description: "Window tinting",
+  },
+  {
+    src: "/src/assets/OzWindowTint/DJI_20250712142913_0022_D.jpg",
     alt: "Oscar Moran - Shop overview",
     description: "Shop overview",
   },
   {
-    src: "/AboutPics/WINDOW TINTING is an EXCELLENT OPTION.jpeg",
-    alt: "Oscar Moran - Window tinting",
-    description: "Window tinting",
+    src: "/src/assets/OzWindowTint/DJI_20250712143035_0036_D.jpg",
+    alt: "Oscar Moran - Work in progress",
+    description: "Work in progress",
+  },
+  {
+    src: "/src/assets/OzWindowTint/DJI_20250712143101_0053_D (1).jpg",
+    alt: "Oscar Moran - Customer service",
+    description: "Customer service",
+  },
+  {
+    src: "/src/assets/OzWindowTint/DJI_20250712144807_0067_D (2).jpg",
+    alt: "Oscar Moran - Professional finish",
+    description: "Professional finish",
+  },
+  {
+    src: "/src/assets/OzWindowTint/DJI_20250712144931_0075_D (1).jpg",
+    alt: "Oscar Moran - Final result",
+    description: "Final result",
   },
 ];
 
 const About = () => {
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
 
-  // Auto-advance slideshow
+  // Auto-advance slideshow with 3/4 second rotation
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentPhotoIndex((prevIndex) =>
         prevIndex === ownerPhotos.length - 1 ? 0 : prevIndex + 1
       );
-    }, 4000); // Change photo every 4 seconds
+    }, 750); // Change photo every 750ms (3/4 second)
 
     return () => clearInterval(interval);
   }, []);
@@ -82,63 +107,22 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             {/* Photo Section - Left */}
             <div className="animate-fade-in relative order-2 lg:order-1">
-              {/* Slideshow Container */}
-              <div className="relative w-full max-w-lg mx-auto rounded-2xl overflow-hidden shadow-2xl lg:hover:shadow-3xl transition-all duration-500 transform lg:hover:scale-105">
-                {/* Photo Display */}
-                <div className="relative h-[500px]">
-                  {ownerPhotos.map((photo, index) => (
-                    <div
-                      key={index}
-                      className={`absolute inset-0 transition-opacity duration-1000 ${
-                        index === currentPhotoIndex
-                          ? "opacity-100"
-                          : "opacity-0"
-                      }`}
-                    >
-                      {photo.src.startsWith("/placeholder") ? (
-                        // Placeholder for photos not yet uploaded
-                        <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                          <div className="text-center text-gray-500">
-                            <div className="text-4xl mb-2">📸</div>
-                            <div className="text-sm font-medium">
-                              Owner Photo {index + 1}
-                            </div>
-                            <div className="text-xs">{photo.description}</div>
-                            <div className="text-xs mt-1">
-                              Replace with actual photo
-                            </div>
-                          </div>
-                        </div>
-                      ) : (
-                        // Actual photo
-                        <img
-                          src={photo.src}
-                          alt={photo.alt}
-                          className="w-full h-full object-cover"
-                        />
-                      )}
-                    </div>
-                  ))}
-                </div>
-
-                {/* Photo Indicators - Auto-only */}
-                <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
-                  {ownerPhotos.map((_, index) => (
-                    <div
-                      key={index}
-                      className={`w-4 h-4 rounded-full transition-all duration-300 ${
-                        index === currentPhotoIndex
-                          ? "bg-white scale-125 shadow-lg"
-                          : "bg-white/50"
-                      }`}
+              {/* Free-positioned Photo Display */}
+              <div className="relative w-full max-w-lg mx-auto h-[500px]">
+                {ownerPhotos.map((photo, index) => (
+                  <div
+                    key={index}
+                    className={`absolute inset-0 transition-opacity duration-1000 ${
+                      index === currentPhotoIndex ? "opacity-100" : "opacity-0"
+                    }`}
+                  >
+                    <img
+                      src={photo.src}
+                      alt={photo.alt}
+                      className="w-full h-full object-cover rounded-2xl shadow-2xl"
                     />
-                  ))}
-                </div>
-              </div>
-
-              {/* Photo Counter */}
-              <div className="text-center mt-6 text-sm text-muted-foreground">
-                Photo {currentPhotoIndex + 1} of {ownerPhotos.length}
+                  </div>
+                ))}
               </div>
             </div>
 
