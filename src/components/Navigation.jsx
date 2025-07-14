@@ -103,10 +103,10 @@ const Navigation = () => {
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Right side */}
           <button
             onClick={toggleMobileMenu}
-            className="lg:hidden p-2 text-foreground transition-colors duration-200 relative z-50"
+            className="lg:hidden p-2 text-foreground transition-colors duration-200 relative z-50 ml-auto"
             aria-label="Toggle mobile menu"
           >
             <div className="w-6 h-6 flex flex-col justify-center items-center">
@@ -147,13 +147,13 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         <div
-          className={`lg:hidden fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-background/95 backdrop-blur-md shadow-2xl border-l border-border transition-all duration-300 ease-in-out z-50 transform ${
+          className={`lg:hidden fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl border-l border-border transition-all duration-300 ease-in-out z-50 transform ${
             isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
           <div className="flex flex-col h-full">
             {/* Mobile Menu Header */}
-            <div className="flex items-center justify-between p-6 border-b border-border">
+            <div className="flex items-center justify-between p-6 border-b border-border bg-white">
               <div className="text-xl font-bold text-primary-glow">Menu</div>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
