@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { useState, useEffect, useRef } from "react";
-import heroVideo from "@/assets/Videos/OzWindowTint.mov";
 
 const Hero = () => {
   const [isVideoVisible, setIsVideoVisible] = useState(true);
@@ -41,8 +40,8 @@ const Hero = () => {
 
   // Stat card data
   const stats = [
-    { value: "5+", label: "Years Experience" },
-    { value: "500+", label: "Happy Customers" },
+    { value: "5+", label: "Years of Experience" },
+    { value: "00+", label: "Happy Customers" },
     { value: "100%", label: "Satisfaction Guarantee" },
   ];
 
@@ -60,22 +59,16 @@ const Hero = () => {
             isVideoVisible ? "opacity-100" : "opacity-0"
           }`}
         >
-          <source src={heroVideo} type="video/mp4" />
+          <source
+            src="/Videos/ffd232571289d5c2befbc5840f4cd984.mp4"
+            type="video/mp4"
+          />
           Your browser does not support the video tag.
         </video>
       </div>
 
       {/* Fallback Background Image */}
-      <div
-        className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
-          isVideoVisible ? "opacity-0" : "opacity-100"
-        }`}
-        style={{
-          backgroundImage: `url(${heroVideo})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
+      {/* Optionally, add a static fallback image here if you have one, or remove this block if not needed */}
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-hero opacity-80" />
@@ -99,7 +92,7 @@ const Hero = () => {
             variant=""
             size="lg"
             onClick={scrollToContact}
-            className="text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 w-full sm:w-auto min-w-[200px]"
+            className="text-base hover:scale-105 transition-all duration-300 sm:text-lg px-6 sm:px-8 py-3 sm:py-4 w-full sm:w-auto min-w-[200px]"
           >
             Get Quote
           </Button>
@@ -107,7 +100,7 @@ const Hero = () => {
             variant=""
             size="lg"
             onClick={scrollToGallery}
-            className="text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 w-full sm:w-auto min-w-[200px]"
+            className="text-base sm:text-lg hover:scale-105 transition-all duration-300 px-6 sm:px-8 py-3 sm:py-4 w-full sm:w-auto min-w-[200px]"
           >
             View Our Work
           </Button>

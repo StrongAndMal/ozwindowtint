@@ -91,22 +91,25 @@ const Contact = () => {
                       }
                     >
                       <SelectTrigger
-                        className={`bg-white/20 border-none text-white/80 ${
+                        className={`bg-white/20 border-none text-white/80 px-4 py-3 ${
                           errors.serviceType ? "border-red-400" : ""
                         }`}
                       >
-                        <SelectValue placeholder="Please select" />
+                        <SelectValue
+                          placeholder="Please select"
+                          className="px-0"
+                        />
                       </SelectTrigger>
-                      <SelectContent className="bg-gray-900 border-none py-2 px-2">
+                      <SelectContent className="bg-gray-900 border-none py-2 px-4">
                         <SelectItem
                           value="automotive"
-                          className="text-white px-2 py-3 my-1 transition-all duration-150 lg:hover:bg-white/10 cursor-pointer"
+                          className="text-white px-0 py-3 my-1 transition-all duration-150 lg:hover:bg-white/10 cursor-pointer"
                         >
                           Nano Carbon Puremax Automotive Tint
                         </SelectItem>
                         <SelectItem
                           value="residential"
-                          className="text-white px-2 py-3 my-1 transition-all duration-150 lg:hover:bg-white/10 cursor-pointer"
+                          className="text-white px-0 py-3 my-1 transition-all duration-150 lg:hover:bg-white/10 cursor-pointer"
                         >
                           FXtreme2 Series – Nano Ceramic Film Automotive Tint
                         </SelectItem>
@@ -133,7 +136,7 @@ const Contact = () => {
                       onChange={(e) =>
                         handleInputChange("name", e.target.value)
                       }
-                      className={`bg-white/20 text-white placeholder:text-white/60 ${
+                      className={`bg-white/20 text-white placeholder:text-white/60 px-4 py-3 ${
                         errors.name ? "border-red-400" : ""
                       }`}
                     />
@@ -159,7 +162,7 @@ const Contact = () => {
                       onChange={(e) =>
                         handleInputChange("email", e.target.value)
                       }
-                      className={`bg-white/20  text-white placeholder:text-white/60 ${
+                      className={`bg-white/20  text-white placeholder:text-white/60 px-4 py-3 ${
                         errors.email ? "border-red-400" : ""
                       }`}
                     />
@@ -184,7 +187,7 @@ const Contact = () => {
                       onChange={(e) =>
                         handleInputChange("phone", e.target.value)
                       }
-                      className="bg-white/20  text-white placeholder:text-white/60"
+                      className="bg-white/20  text-white placeholder:text-white/60 px-4 py-3"
                     />
                   </div>
                 </div>
@@ -204,7 +207,7 @@ const Contact = () => {
                       handleInputChange("additionalDetails", e.target.value)
                     }
                     rows={4}
-                    className="bg-white/20 text-white placeholder:text-white/60"
+                    className="bg-white/20 text-white placeholder:text-white/60 px-4 py-3"
                   />
                 </div>
                 {/* Submit Button */}
@@ -212,7 +215,7 @@ const Contact = () => {
                   <Button
                     type="submit"
                     size="lg"
-                    className="px-12 py-4 text-lg bg-white text-gray-900  font-semibold"
+                    className="px-12 hover:scale-105 transition-all duration-300 py-4 text-lg bg-white text-gray-900  font-semibold"
                   >
                     Get My Free Quote
                   </Button>
