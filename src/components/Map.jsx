@@ -13,8 +13,9 @@ const Map = () => {
 
       // Get environment variables with better fallbacks
       const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
-      const latitude = parseFloat(import.meta.env.VITE_LATITUDE) || 33.9164;
-      const longitude = parseFloat(import.meta.env.VITE_LONGITUDE) || -118.3526;
+      const latitude = parseFloat(import.meta.env.VITE_LATITUDE) || 33.9065352;
+      const longitude =
+        parseFloat(import.meta.env.VITE_LONGITUDE) || -118.3522791;
       const businessName = import.meta.env.VITE_BUSINESS_NAME || "OzWindowTint";
       const businessAddress =
         import.meta.env.VITE_BUSINESS_ADDRESS ||
