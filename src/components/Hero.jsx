@@ -41,7 +41,7 @@ const Hero = () => {
   // Stat card data
   const stats = [
     { value: "5+", label: "Years of Experience" },
-    { value: "00+", label: "Happy Customers" },
+    { value: "500+", label: "Happy Customers" },
     { value: "100%", label: "Satisfaction Guarantee" },
   ];
 
@@ -59,10 +59,7 @@ const Hero = () => {
             isVideoVisible ? "opacity-100" : "opacity-0"
           }`}
         >
-          <source
-            src="/Videos/ffd232571289d5c2befbc5840f4cd984.mp4"
-            type="video/mp4"
-          />
+          <source src="/Videos/OzWindowTint.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
