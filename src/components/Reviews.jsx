@@ -1,6 +1,22 @@
-import GoogleReviewsWidget from "google-reviews-widget";
+import { useEffect, useRef } from "react";
 
 const Reviews = () => {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://widget.trustmary.com/Ly856fpNk";
+    script.async = true;
+    if (containerRef.current) {
+      containerRef.current.appendChild(script);
+    }
+    return () => {
+      if (containerRef.current && script.parentNode) {
+        script.parentNode.removeChild(script);
+      }
+    };
+  }, []);
+
   return (
     <section className="py-20 bg-background relative overflow-hidden">
       {/* Background decorative elements */}
@@ -8,7 +24,6 @@ const Reviews = () => {
         <div className="absolute top-10 left-10 w-32 h-32 bg-primary/5 rounded-full blur-2xl"></div>
         <div className="absolute bottom-10 right-10 w-24 h-24 bg-primary/10 rounded-full blur-xl"></div>
       </div>
-
       <div className="container mx-auto px-4 relative z-10">
         {/* Header Section */}
         <div className="text-center mb-16 animate-slide-up">
@@ -20,14 +35,8 @@ const Reviews = () => {
             have to say about their experience.
           </p>
         </div>
-
-        {/* Google Reviews Widget - Full Width */}
-        <div className="w-full max-w-7xl mx-auto">
-          <GoogleReviewsWidget
-            instanceId="wm9bG5GYm0ninbFH8TO1"
-            style={{ width: "100%" }}
-          />
-        </div>
+        {/* Trustmary Widget - Full Width */}
+        <div className="w-full max-w-7xl mx-auto" ref={containerRef} />
       </div>
     </section>
   );
