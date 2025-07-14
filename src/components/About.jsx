@@ -1,58 +1,65 @@
 import { useState, useEffect } from "react";
 
+// Import all images properly for Vite to process them
+import photo1 from "@/assets/OzWindowTint/DJI_20250712142612_0013_D.jpg";
+import photo2 from "@/assets/OzWindowTint/DJI_20250712142642_0015_D.jpg";
+import photo3 from "@/assets/OzWindowTint/DJI_20250712142655_0016_D.jpg";
+import photo4 from "@/assets/OzWindowTint/DJI_20250712142732_0017_D.jpg";
+import photo5 from "@/assets/OzWindowTint/DJI_20250712142905_0020_D.jpg";
+import photo6 from "@/assets/OzWindowTint/DJI_20250712142913_0022_D.jpg";
+import photo7 from "@/assets/OzWindowTint/DJI_20250712143035_0036_D.jpg";
+import photo8 from "@/assets/OzWindowTint/DJI_20250712143101_0053_D (1).jpg";
+import photo9 from "@/assets/OzWindowTint/DJI_20250712144807_0067_D (2).jpg";
+import photo10 from "@/assets/OzWindowTint/DJI_20250712144931_0075_D (1).jpg";
+
 const ownerPhotos = [
   {
-    src: "/src/assets/OzWindowTint/DJI_20250712142612_0013_D.jpg",
+    src: photo1,
     alt: "Oscar Moran - Professional work",
     description: "Professional work",
   },
   {
-    src: "/src/assets/OzWindowTint/DJI_20250712142623_0014_D.jpg",
-    alt: "Oscar Moran - Shop work",
-    description: "Shop work",
-  },
-  {
-    src: "/src/assets/OzWindowTint/DJI_20250712142642_0015_D.jpg",
+    src: photo2,
     alt: "Oscar Moran - Tinting process",
     description: "Tinting process",
   },
   {
-    src: "/src/assets/OzWindowTint/DJI_20250712142655_0016_D.jpg",
+    src: photo3,
     alt: "Oscar Moran - Quality work",
     description: "Quality work",
   },
   {
-    src: "/src/assets/OzWindowTint/DJI_20250712142732_0017_D.jpg",
+    src: photo4,
     alt: "Oscar Moran - Professional service",
     description: "Professional service",
   },
   {
-    src: "/src/assets/OzWindowTint/DJI_20250712142905_0020_D.jpg",
+    src: photo5,
     alt: "Oscar Moran - Window tinting",
     description: "Window tinting",
   },
   {
-    src: "/src/assets/OzWindowTint/DJI_20250712142913_0022_D.jpg",
+    src: photo6,
     alt: "Oscar Moran - Shop overview",
     description: "Shop overview",
   },
   {
-    src: "/src/assets/OzWindowTint/DJI_20250712143035_0036_D.jpg",
+    src: photo7,
     alt: "Oscar Moran - Work in progress",
     description: "Work in progress",
   },
   {
-    src: "/src/assets/OzWindowTint/DJI_20250712143101_0053_D (1).jpg",
+    src: photo8,
     alt: "Oscar Moran - Customer service",
     description: "Customer service",
   },
   {
-    src: "/src/assets/OzWindowTint/DJI_20250712144807_0067_D (2).jpg",
+    src: photo9,
     alt: "Oscar Moran - Professional finish",
     description: "Professional finish",
   },
   {
-    src: "/src/assets/OzWindowTint/DJI_20250712144931_0075_D (1).jpg",
+    src: photo10,
     alt: "Oscar Moran - Final result",
     description: "Final result",
   },
@@ -99,8 +106,8 @@ const About = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            {/* Photo Section - Left */}
-            <div className="animate-fade-in relative order-2 lg:order-1">
+            {/* Photo Section - Always First on Mobile */}
+            <div className="animate-fade-in relative order-1 lg:order-1">
               {/* Free-positioned Photo Display */}
               <div className="relative w-full max-w-lg mx-auto h-[500px]">
                 {ownerPhotos.map((photo, index) => (
@@ -120,9 +127,9 @@ const About = () => {
               </div>
             </div>
 
-            {/* Text Section - Right */}
+            {/* Text Section - Always Second on Mobile */}
             <div
-              className="space-y-8 animate-slide-up order-1 lg:order-2"
+              className="space-y-8 animate-slide-up order-2 lg:order-2"
               style={{ animationDelay: "0.2s" }}
             >
               <div>

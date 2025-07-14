@@ -43,7 +43,7 @@ const Footer = () => {
               <div className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4">
                 Follow OzWindowTint:
               </div>
-              <div className="flex space-x-4 sm:space-x-6">
+              <div className="flex space-x-4 justify-left sm:space-x-6">
                 <a
                   href="https://www.tiktok.com/@ozwindowtint2"
                   target="_blank"
@@ -151,7 +151,7 @@ const Footer = () => {
                 (323) 485-2615
               </div>
               <div className="lg:hover:text-primary transition-colors duration-200">
-                info@ozwindowtint.com
+                Osmoran2007@hotmail.com
               </div>
             </div>
           </div>
@@ -184,7 +184,7 @@ const Footer = () => {
         <div className="mt-6 sm:mt-8 lg:mt-10 pt-6 sm:pt-8 lg:pt-10 border-t border-border">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <div className="text-sm sm:text-base text-muted-foreground text-center sm:text-left">
-              © {currentYear} OZWindowTint. All rights reserved.
+              © {currentYear} OzWindowTint. All rights reserved.
             </div>
             <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 text-sm sm:text-base">
               <Link

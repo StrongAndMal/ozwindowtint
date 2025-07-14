@@ -91,7 +91,7 @@ const Contact = () => {
                       }
                     >
                       <SelectTrigger
-                        className={`bg-white/20 border-none text-white ${
+                        className={`bg-white/20 border-none text-white/80 ${
                           errors.serviceType ? "border-red-400" : ""
                         }`}
                       >

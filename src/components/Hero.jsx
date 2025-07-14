@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { useState, useEffect, useRef } from "react";
-
-const HERO_VIDEO_PATH = "/src/assets/Videos/OzWindowTint.mov";
+import heroVideo from "@/assets/Videos/OzWindowTint.mov";
 
 const Hero = () => {
   const [isVideoVisible, setIsVideoVisible] = useState(true);
   const videoRef = useRef(null);
+  const [hoveredIndex, setHoveredIndex] = useState(null); // For blur effect
 
   const scrollToContact = () => {
     const element = document.getElementById("contact");
@@ -39,6 +39,13 @@ const Hero = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Stat card data
+  const stats = [
+    { value: "5+", label: "Years Experience" },
+    { value: "500+", label: "Happy Customers" },
+    { value: "100%", label: "Satisfaction Guarantee" },
+  ];
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 lg:pt-20">
       {/* Video Background */}
@@ -53,7 +60,7 @@ const Hero = () => {
             isVideoVisible ? "opacity-100" : "opacity-0"
           }`}
         >
-          <source src={HERO_VIDEO_PATH} type="video/mp4" />
+          <source src={heroVideo} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -64,7 +71,7 @@ const Hero = () => {
           isVideoVisible ? "opacity-0" : "opacity-100"
         }`}
         style={{
-          backgroundImage: `url(${HERO_VIDEO_PATH})`,
+          backgroundImage: `url(${heroVideo})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -107,30 +114,29 @@ const Hero = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 max-w-4xl mx-auto px-4">
-          <div className="text-center">
-            <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-glow mb-2">
-              5+
+          {stats.map((stat, idx) => (
+            <div
+              key={stat.label}
+              className={`text-center transition-all duration-300 md:rounded-xl md:hover:scale-105
+                ${
+                  hoveredIndex !== null && hoveredIndex !== idx
+                    ? "md:blur-sm md:opacity-60"
+                    : ""
+                }
+              `}
+              onMouseEnter={() =>
+                window.innerWidth >= 768 && setHoveredIndex(idx)
+              }
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-glow mb-2">
+                {stat.value}
+              </div>
+              <div className="text-primary-foreground/80 text-white text-sm sm:text-base">
+                {stat.label}
+              </div>
             </div>
-            <div className="text-primary-foreground/80 text-white text-sm sm:text-base">
-              Years Experience
-            </div>
-          </div>
-          <div className="text-center">
-            <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-glow mb-2">
-              500+
-            </div>
-            <div className="text-primary-foreground/80 text-white text-sm sm:text-base">
-              Happy Customers
-            </div>
-          </div>
-          <div className="text-center">
-            <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-glow mb-2">
-              100%
-            </div>
-            <div className="text-primary-foreground/80 text-white text-sm sm:text-base">
-              Satisfaction Guarantee
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

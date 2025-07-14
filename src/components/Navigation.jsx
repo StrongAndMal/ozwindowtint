@@ -41,14 +41,11 @@ const Navigation = () => {
             to="/"
             className="flex flex-col items-center space-y-1 min-w-[120px]"
           >
-            <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-primary-glow text-center">
-              OzWindowTint
-            </div>
             <img
               src={logo}
               alt="OzWindowTint Logo"
-              className="h-8 md:h-10 w-auto mx-auto mt-1 object-contain"
-              style={{ maxWidth: "80px" }}
+              className="h-20 md:h-20 w-auto px-auto mt-1 object-contain"
+              style={{ maxWidth: "500px" }}
             />
           </Link>
 
@@ -88,7 +85,7 @@ const Navigation = () => {
               variant="cta"
               size="lg"
               onClick={() => scrollToSection("contact")}
-              className="bg-primary lg:hover:bg-primary/90 text-black font-bold px-6 py-3 rounded-lg shadow-lg lg:hover:shadow-xl transition-all duration-300 transform lg:hover:scale-105 border-2 border-primary/20 lg:hover:border-primary/40"
+              className="bg-primary lg:hover:bg-primary/90 text-white font-bold px-6 py-3 rounded-lg shadow-lg lg:hover:shadow-xl transition-all duration-300 transform lg:hover:scale-105 border-2 border-primary/20 lg:hover:border-primary/40"
             >
               Book Now
             </Button>
@@ -203,7 +200,6 @@ const Navigation = () => {
                 onClick={() => scrollToSection("contact")}
                 className="w-full bg-primary text-white font-semibold px-6 py-4 rounded-lg shadow-lg transition-all duration-300 border-2 border-primary/20 text-lg"
               >
-                <span className="mr-2">🚗</span>
                 Book Now
               </Button>
             </div>
