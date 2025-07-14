@@ -1,12 +1,6 @@
 import { useState, useEffect } from "react";
-import ownerPortrait from "@/assets/owner-portrait.jpg";
 
 const ownerPhotos = [
-  {
-    src: ownerPortrait, // Keep the original photo as first
-    alt: "Oscar Moran - Working on a vehicle",
-    description: "Oscar working on a vehicle",
-  },
   {
     src: "/src/assets/OzWindowTint/DJI_20250712142612_0013_D.jpg",
     alt: "Oscar Moran - Professional work",
@@ -67,13 +61,13 @@ const ownerPhotos = [
 const About = () => {
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
 
-  // Auto-advance slideshow with 3/4 second rotation
+  // Auto-advance slideshow with 8 second rotation
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentPhotoIndex((prevIndex) =>
         prevIndex === ownerPhotos.length - 1 ? 0 : prevIndex + 1
       );
-    }, 750); // Change photo every 750ms (3/4 second)
+    }, 8000); // Change photo every 8 seconds
 
     return () => clearInterval(interval);
   }, []);
