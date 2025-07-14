@@ -19,9 +19,9 @@ All colors MUST be HSL.
     --popover: 220 25% 12%; /* #14213d - Dark blue for popovers */
     --popover-foreground: 0 0% 100%; /* #FFFFFF - White text on popovers */
 
-    --primary: 35 100% 52%; /* #FCA311 - Orange primary */
-    --primary-foreground: 0 0% 0%; /* #000000 - Black text on orange */
-    --primary-glow: 35 100% 62%; /* Lighter orange for glow effects */
+    --primary: 186 62% 40%; /* #269da5 */
+    --primary-foreground: 0 0% 100%; /* #FFFFFF */
+    --primary-glow: 186 62% 50%; /* lighter #269da5 */
 
     --secondary: 0 0% 90%; /* #E5E5E5 - Light gray secondary */
     --secondary-foreground: 0 0% 0%; /* #000000 - Black text on light gray */
@@ -29,8 +29,8 @@ All colors MUST be HSL.
     --muted: 220 25% 15%; /* Slightly lighter dark blue for muted elements */
     --muted-foreground: 0 0% 100%; /* #FFFFFF - White text for muted elements */
 
-    --accent: 35 100% 52%; /* #FCA311 - Orange accent */
-    --accent-foreground: 0 0% 0%; /* #000000 - Black text on orange */
+    --accent: 186 62% 40%; /* #269da5 */
+    --accent-foreground: 0 0% 100%; /* #FFFFFF */
 
     --destructive: 0 84% 60%; /* Red for destructive actions */
     --destructive-foreground: 0 0% 100%; /* #FFFFFF - White text on red */
@@ -110,8 +110,11 @@ All colors MUST be HSL.
     --popover: 220 25% 12%; /* #14213d - Dark blue */
     --popover-foreground: 0 0% 100%; /* #FFFFFF - White text */
 
-    --primary: 35 100% 52%; /* #FCA311 - Orange */
-    --primary-foreground: 0 0% 0%; /* #000000 - Black text on orange */
+    --primary: 186 62% 40%; /* #269da5 */
+    --primary-foreground: 0 0% 100%; /* #FFFFFF */
+    --primary-glow: 186 62% 50%; /* lighter #269da5 */
+    --accent: 186 62% 40%; /* #269da5 */
+    --accent-foreground: 0 0% 100%; /* #FFFFFF */
 
     --secondary: 0 0% 90%; /* #E5E5E5 - Light gray */
     --secondary-foreground: 0 0% 0%; /* #000000 - Black text on light gray */
