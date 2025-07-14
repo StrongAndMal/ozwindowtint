@@ -1,35 +1,67 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import before1 from "@/assets/before-1.jpg";
-import after1 from "@/assets/after-1.jpg";
-import before2 from "@/assets/before-2.jpg";
-import after2 from "@/assets/after-2.jpg";
 import yelpLogo from "@/social-icons-master/SVG/Color/Yelp.svg";
 
 const Gallery = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Create 20 placeholder before/after pairs
+  // Use your OzWindowTint photos for the gallery
   const galleryItems = [
     {
-      before: before1,
-      after: after1,
-      title: "Sedan Tint Job",
-      description: "Professional tinting with premium film",
+      image: "/src/assets/OzWindowTint/DJI_20250712142612_0013_D.jpg",
+      title: "Professional Window Tinting",
+      description: "Premium quality tinting with attention to detail",
     },
     {
-      before: before2,
-      after: after2,
-      title: "SUV Window Tint",
-      description: "Complete vehicle tinting service",
+      image: "/src/assets/OzWindowTint/DJI_20250712142623_0014_D.jpg",
+      title: "SUV Window Tint Service",
+      description: "Complete vehicle tinting for maximum protection",
     },
-    // Add 18 more placeholder items
-    ...Array.from({ length: 18 }, (_, i) => ({
-      before: `https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80&sig=${i}`,
-      after: `https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80&sig=${i}`,
-      title: `Vehicle Tint ${i + 3}`,
-      description: `Professional tinting service ${i + 3}`,
-    })),
+    {
+      image: "/src/assets/OzWindowTint/DJI_20250712142642_0015_D.jpg",
+      title: "Precision Tinting Process",
+      description: "Expert application with premium materials",
+    },
+    {
+      image: "/src/assets/OzWindowTint/DJI_20250712142655_0016_D.jpg",
+      title: "Quality Workmanship",
+      description: "Every detail matters in our tinting process",
+    },
+    {
+      image: "/src/assets/OzWindowTint/DJI_20250712142732_0017_D.jpg",
+      title: "Professional Service",
+      description: "Trusted by hundreds of satisfied customers",
+    },
+    {
+      image: "/src/assets/OzWindowTint/DJI_20250712142905_0020_D.jpg",
+      title: "Window Tinting Excellence",
+      description: "Protection, privacy, and style combined",
+    },
+    {
+      image: "/src/assets/OzWindowTint/DJI_20250712142913_0022_D.jpg",
+      title: "Shop Overview",
+      description: "State-of-the-art equipment for perfect results",
+    },
+    {
+      image: "/src/assets/OzWindowTint/DJI_20250712143035_0036_D.jpg",
+      title: "Work in Progress",
+      description: "Meticulous attention to every detail",
+    },
+    {
+      image: "/src/assets/OzWindowTint/DJI_20250712143101_0053_D (1).jpg",
+      title: "Customer Satisfaction",
+      description: "Your satisfaction is our priority",
+    },
+    {
+      image: "/src/assets/OzWindowTint/DJI_20250712144807_0067_D (2).jpg",
+      title: "Professional Finish",
+      description: "Clean, precise, and long-lasting results",
+    },
+    {
+      image: "/src/assets/OzWindowTint/DJI_20250712144931_0075_D (1).jpg",
+      title: "Final Result",
+      description: "Beautiful tinting that enhances your vehicle",
+    },
   ];
 
   // Auto-advance carousel
@@ -46,11 +78,11 @@ const Gallery = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-slide-up">
           <h2 className="text-7xl font-bold mb-6 text-foreground">
-            Before & After: See the Pure Difference
+            Our Work: Quality You Can See
           </h2>
           <p className="text-lg text-white/80 max-w-3xl mx-auto">
-            It's more than a look. It's protection, privacy, and comfort you can
-            feel.
+            Professional window tinting that combines protection, privacy, and
+            style.
           </p>
         </div>
 
@@ -66,66 +98,20 @@ const Gallery = () => {
                     index === currentSlide ? "opacity-100" : "opacity-0"
                   }`}
                 >
-                  <div className="grid grid-cols-1 md:grid-cols-2 h-full">
-                    {/* Before Image */}
-                    <div className="relative">
-                      {item.before.startsWith("/placeholder") ? (
-                        <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                          <div className="text-center text-gray-500">
-                            <div className="text-4xl mb-2">📸</div>
-                            <div className="text-sm font-medium">
-                              Before {index + 1}
-                            </div>
-                            <div className="text-xs">
-                              Replace with actual photo
-                            </div>
-                          </div>
-                        </div>
-                      ) : (
-                        <img
-                          src={item.before}
-                          alt={`Before - ${item.title}`}
-                          className="w-full h-full object-cover"
-                        />
-                      )}
-                      <div className="absolute top-4 left-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm font-medium">
-                        Before
-                      </div>
-                    </div>
+                  <div className="relative h-full">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover"
+                    />
 
-                    {/* After Image */}
-                    <div className="relative">
-                      {item.after.startsWith("/placeholder") ? (
-                        <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                          <div className="text-center text-gray-500">
-                            <div className="text-4xl mb-2">📸</div>
-                            <div className="text-sm font-medium">
-                              After {index + 1}
-                            </div>
-                            <div className="text-xs">
-                              Replace with actual photo
-                            </div>
-                          </div>
-                        </div>
-                      ) : (
-                        <img
-                          src={item.after}
-                          alt={`After - ${item.title}`}
-                          className="w-full h-full object-cover"
-                        />
-                      )}
-                      <div className="absolute top-4 right-4 bg-primary/90 text-white px-3 py-1 rounded-full text-sm font-medium">
-                        After
-                      </div>
+                    {/* Overlay with info */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                      <h3 className="text-xl font-bold text-white mb-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-white/90">{item.description}</p>
                     </div>
-                  </div>
-
-                  {/* Slide Info */}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                    <h3 className="text-xl font-bold text-white mb-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-white/90">{item.description}</p>
                   </div>
                 </div>
               ))}
