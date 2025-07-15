@@ -46,30 +46,30 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto px-4">
           {services.map((service, index) => (
             <Card
               key={service.title}
-              className="bg-gradient-to-br from-primary/10 to-primary/5 transition-all duration-300  md:hover:scale-105"
+              className="bg-gradient-to-br from-primary/10 to-primary/5 transition-all duration-300 hover:scale-105 p-8 border border-primary/20 shadow-xl"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <CardHeader>
-                <CardTitle className="text-3xl font-bold text-white/95 pb-4">
+              <CardHeader className="pb-6">
+                <CardTitle className="text-3xl font-bold text-white/95 pb-4 leading-tight">
                   {service.title}
                 </CardTitle>
-                <CardDescription className="text-md text-muted-foreground text-white/80">
+                <CardDescription className="text-lg text-muted-foreground text-white/80 leading-relaxed">
                   {service.description}
                 </CardDescription>
               </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
+              <CardContent className="pt-4">
+                <ul className="space-y-4">
                   {service.features.map((feature, featureIndex) => (
                     <li
                       key={featureIndex}
-                      className="flex items-center text-md text-white/80"
+                      className="flex items-start text-lg text-white/80 leading-relaxed"
                     >
-                      <div className="w-2 h-2 bg-primary rounded-full mr-3 flex-shrink-0" />
-                      {feature}
+                      <div className="w-3 h-3 bg-primary rounded-full mr-4 mt-2 flex-shrink-0" />
+                      <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
