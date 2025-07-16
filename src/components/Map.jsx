@@ -190,8 +190,8 @@ const Map = () => {
           Visit OzWindowTint - Your Local Window Tinting Experts
         </h2>
         <p className="text-sm sm:text-lg max-w-full text-white/80 mx-auto break-words">
-          Drop by our shop in Hawthorne, CA for expert window tinting services.
-          Let's get your car, home, or business looking right.
+          Drop by our shop in Hawthorne, CA for expert car window tinting. Let's
+          get your car looking right!
         </p>
       </div>
 

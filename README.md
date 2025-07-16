@@ -6,7 +6,7 @@ Welcome to the official repository for **OZWindowTint** — a modern, responsive
 
 ## 🚗 About OZWindowTint
 
-OZWindowTint is a family-owned, community-trusted business specializing in automotive, residential, and commercial window tinting. Our site is designed to showcase our work, make it easy for customers to get in touch, and highlight our values of quality, honesty, and craftsmanship.
+OZWindowTint is a family-owned, community-trusted business specializing in automotive window tinting. Our site is designed to showcase our work, make it easy for customers to get in touch, and highlight our values of quality, honesty, and craftsmanship.
 
 ---
 
