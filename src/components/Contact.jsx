@@ -60,13 +60,13 @@ const Contact = () => {
     <section id="contact" className="py-20 bg-background">
       <div className="container px-10">
         <div className="text-center mb-10">
-          <h2 className="text-6xl font-bold mb-4 text-foreground">
+          <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-4 text-foreground break-words max-w-full">
             Get Your Free Quote
           </h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto">
+          <p className="text-base sm:text-xl max-w-full text-white/80 mx-auto break-words">
             Ready to book? Got a question? We're here to help.
           </p>
-          <p className="text-sm text-white/80 pt-2 max-w-3xl mx-auto">
+          <p className="text-xs sm:text-sm text-white/80 pt-2 max-w-full mx-auto break-words">
             Fill out the form below and we’ll get back to you ASAP.
           </p>
         </div>
@@ -219,7 +219,7 @@ const Contact = () => {
                   >
                     Get My Free Quote
                   </Button>
-                  <p className="text-sm text-white/80 mt-4">
+                  <p className="text-xs sm:text-sm text-white/80 mt-4 break-words max-w-full">
                     We typically respond within 2-4 hours during business hours
                   </p>
                 </div>

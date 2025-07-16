@@ -155,10 +155,10 @@ const Map = () => {
       <div className="w-full">
         {/* Title Section */}
         <div className="text-center mb-8">
-          <h2 className="text-6xl font-bold mb-4 text-white">
+          <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-4 text-white break-words max-w-full">
             Visit OzWindowTint - Your Local Window Tinting Expert
           </h2>
-          <p className="text-lg text-white/80 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-lg max-w-full text-white/80 mx-auto break-words">
             Drop by our shop in Hawthorne, CA for expert window tinting
             services. Let's get your car looking right.
           </p>
@@ -186,10 +186,10 @@ const Map = () => {
     <div className="w-full">
       {/* Title Section */}
       <div className="text-center mb-8">
-        <h2 className="text-6xl font-bold mb-4 text-white">
+        <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-4 text-white break-words max-w-full">
           Visit OzWindowTint - Your Local Window Tinting Experts
         </h2>
-        <p className="text-lg text-white/80 max-w-2xl mx-auto">
+        <p className="text-sm sm:text-lg max-w-full text-white/80 mx-auto break-words">
           Drop by our shop in Hawthorne, CA for expert window tinting services.
           Let's get your car, home, or business looking right.
         </p>

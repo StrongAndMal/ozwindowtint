@@ -85,6 +85,23 @@ const Navigation = () => {
             </div>
           </div>
 
+          {/* Book Now Button - Mobile */}
+          <div className="lg:hidden flex items-center justify-end ml-auto">
+            <a
+              href="https://book.squareup.com/appointments/821sdhjnscyzx0/location/LWSA7KP8WFHVK/services"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button
+                variant="cta"
+                size="sm"
+                className="bg-primary text-white font-bold px-3 py-1.5 rounded-lg shadow-lg transition-all duration-300 border-2 border-primary/20 text-xs"
+              >
+                Book Now
+              </Button>
+            </a>
+          </div>
+
           {/* Book Now Button - Right side */}
           <div className="hidden lg:block">
             <a

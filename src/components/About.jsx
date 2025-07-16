@@ -97,10 +97,10 @@ const About = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-slide-up">
-            <h2 className="text-6xl font-bold mb-6 text-foreground">
+            <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-6 text-foreground break-words max-w-full">
               Meet the Owner
             </h2>
-            <p className="text-xl text-white/80 max-w-2xl mx-auto">
+            <p className="text-base sm:text-xl max-w-full text-white/80 mx-auto break-words">
               The Hands Behind the Tint.
             </p>
           </div>
@@ -133,16 +133,16 @@ const About = () => {
               style={{ animationDelay: "0.2s" }}
             >
               <div>
-                <h3 className="text-5xl md:text-6xl font-bold text-foreground mb-4">
+                <h3 className="text-2xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 break-words max-w-full">
                   Oscar Moran
                 </h3>
-                <p className="text-xl text-primary font-semibold mb-8">
+                <p className="text-base sm:text-xl text-primary font-semibold mb-8 break-words max-w-full">
                   Founder & Master Tint Technician
                 </p>
               </div>
 
               <div className="space-y-6 text-muted-foreground">
-                <p className="text-lg leading-relaxed text-white/80">
+                <p className="text-sm sm:text-lg leading-relaxed text-white/80 break-words max-w-full">
                   I'm Oscar, born and raised in El Salvador. I started tinting
                   windows as a backyard hobby during COVID, and it quickly grew
                   into a passion. After five years of refining my craft, I
@@ -151,7 +151,7 @@ const About = () => {
                   family cars has turned into a trusted business through word of
                   mouth where precision, protection, and care are standard.
                 </p>
-                <p className="text-lg italic leading-relaxed font-semibold text-primary">
+                <p className="text-sm sm:text-lg italic leading-relaxed font-semibold text-primary break-words max-w-full">
                   "When you support my business, you're supporting a family, not
                   a franchise."
                 </p>

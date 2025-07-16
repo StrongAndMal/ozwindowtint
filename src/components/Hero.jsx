@@ -72,14 +72,14 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 text-center text-primary-foreground px-4 sm:px-6 lg:px-8 animate-fade-in w-full max-w-6xl mx-auto">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight">
+        <h1 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight break-words max-w-full">
           Premium Car Window Tinting –
-          <span className="block text-primary-glow mt-2 sm:mt-3 lg:mt-4">
+          <span className="block text-primary-glow mt-2 sm:mt-3 lg:mt-4 text-xl sm:text-3xl md:text-5xl lg:text-6xl">
             Hawthorne, CA
           </span>
         </h1>
 
-        <p className="text-base sm:text-lg lg:text-xl text-white/80 mb-6 sm:mb-8 lg:mb-10 max-w-2xl mx-auto px-4">
+        <p className="text-sm sm:text-base lg:text-xl text-white/80 mb-6 sm:mb-8 lg:mb-10 max-w-full px-2 sm:px-4 break-words">
           Premium UV protection, heat rejection & style you can trust
         </p>
 

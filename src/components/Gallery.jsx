@@ -50,10 +50,10 @@ const Gallery = () => {
     <section id="gallery" className="w-full py-20 px-4 md:px-8 bg-background">
       {/* Heading & Tagline */}
       <div className="max-w-3xl mx-auto text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+        <h2 className="text-2xl md:text-4xl font-bold text-foreground break-words max-w-full">
           Before & After | Real Rides, Real Results
         </h2>
-        <div className="text-md text-white/80 md:text-xl italic mt-2">
+        <div className="text-sm md:text-xl text-white/80 italic mt-2 break-words max-w-full">
           Before? Basic. After? Built Different.
         </div>
       </div>
@@ -83,7 +83,7 @@ const Gallery = () => {
         </div>
         {/* Right: Info Text */}
         <div className="w-full md:w-1/2 flex items-center">
-          <div className="max-w-md mx-auto text-xl leading-relaxed text-white/80">
+          <div className="max-w-md mx-auto text-base md:text-xl leading-relaxed text-white/80 break-words max-w-full">
             Say goodbye to stock windows that left you exposed to blinding sun
             and sizzling interiors, and hello to our premium tint film:
             engineered for up to 92% heat rejection and 99% UV protection, it

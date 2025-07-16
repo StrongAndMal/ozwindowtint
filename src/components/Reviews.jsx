@@ -27,10 +27,10 @@ const Reviews = () => {
       <div className="container mx-auto px-4 relative z-10">
         {/* Header Section */}
         <div className="text-center mb-16 animate-slide-up">
-          <h2 className="text-6xl font-bold mb-6 text-foreground">
+          <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-6 text-foreground break-words max-w-full">
             Customer Reviews for OzWindowTint
           </h2>
-          <p className="text-lg text-white/80 max-w-3xl mx-auto">
+          <p className="text-sm sm:text-lg max-w-full text-white/80 mx-auto break-words">
             See what our customers say about our professional window tinting
             services.
           </p>
