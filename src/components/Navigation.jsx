@@ -87,14 +87,19 @@ const Navigation = () => {
 
           {/* Book Now Button - Right side */}
           <div className="hidden lg:block">
-            <Button
-              variant="cta"
-              size="lg"
-              onClick={() => scrollToSection("contact")}
-              className="bg-primary lg:hover:bg-primary/90 text-white font-bold px-6 py-3 rounded-lg shadow-lg lg:hover:shadow-xl transition-all duration-300 transform lg:hover:scale-105 border-2 border-primary/20 lg:hover:border-primary/40"
+            <a
+              href="https://book.squareup.com/appointments/821sdhjnscyzx0/location/LWSA7KP8WFHVK/services"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Book Now
-            </Button>
+              <Button
+                variant="cta"
+                size="lg"
+                className="bg-primary lg:hover:bg-primary/90 text-white font-bold px-6 py-3 rounded-lg shadow-lg lg:hover:shadow-xl transition-all duration-300 transform lg:hover:scale-105 border-2 border-primary/20 lg:hover:border-primary/40"
+              >
+                Book Now
+              </Button>
+            </a>
           </div>
         </div>
       </div>

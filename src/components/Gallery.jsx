@@ -47,7 +47,7 @@ const Gallery = () => {
   }, []);
 
   return (
-    <section className="w-full py-20 px-4 md:px-8 bg-background">
+    <section id="gallery" className="w-full py-20 px-4 md:px-8 bg-background">
       {/* Heading & Tagline */}
       <div className="max-w-3xl mx-auto text-center mb-12">
         <h2 className="text-4xl md:text-5xl font-bold text-foreground">
@@ -84,20 +84,11 @@ const Gallery = () => {
         {/* Right: Info Text */}
         <div className="w-full md:w-1/2 flex items-center">
           <div className="max-w-md mx-auto text-xl leading-relaxed text-white/80">
-            Before: Factory windows that offered zero shade, zero UV protection,
-            and left this ride feeling hot and exposed. Glare? Everywhere.
-            <br />
-            <br />
-            After: Now tinted with precision using high-performance film, this
-            car’s rocking a sleeker profile, cooler interior, and 99% UV
-            blockage.
-            <br />
-            <br />
-            💨 Instant privacy.
-            <br />
-            🔥 Heat reduction you’ll feel.
-            <br />
-            😎 Looks that turn heads at red lights.
+            Say goodbye to stock windows that left you exposed to blinding sun
+            and sizzling interiors, and hello to our premium tint film:
+            engineered for up to 92% heat rejection and 99% UV protection, it
+            transforms your ride into a cool, private sanctuary with a stealthy,
+            showroom‑ready look.
           </div>
         </div>
       </div>

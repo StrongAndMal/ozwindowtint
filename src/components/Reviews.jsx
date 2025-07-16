@@ -28,11 +28,11 @@ const Reviews = () => {
         {/* Header Section */}
         <div className="text-center mb-16 animate-slide-up">
           <h2 className="text-6xl font-bold mb-6 text-foreground">
-            Local Voices. Honest Feedback.
+            Customer Reviews for OzWindowTint
           </h2>
           <p className="text-lg text-white/80 max-w-3xl mx-auto">
-            Don't just take our word for it. Here's what our satisfied customers
-            have to say about their experience.
+            See what our customers say about our professional window tinting
+            services.
           </p>
         </div>
         {/* Trustmary Widget - Full Width */}

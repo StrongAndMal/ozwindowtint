@@ -187,13 +187,6 @@ const About = () => {
                       Real craftsmanship, backed by passion — not profit.
                     </span>
                   </li>
-                  <li className="flex items-start text-foreground">
-                    <div className="w-3 h-3 bg-primary rounded-full mr-4 mt-2 flex-shrink-0 shadow-lg"></div>
-                    <span className="text-md text-white/80">
-                      When you support me, you're supporting a family, not a
-                      franchise.
-                    </span>
-                  </li>
                 </ul>
               </div>
             </div>

@@ -156,10 +156,11 @@ const Map = () => {
         {/* Title Section */}
         <div className="text-center mb-8">
           <h2 className="text-6xl font-bold mb-4 text-white">
-            Visit OzWindow Tint
+            Visit OzWindowTint - Your Local Window Tinting Expert
           </h2>
           <p className="text-lg text-white/80 max-w-2xl mx-auto">
-            Drop by. Say hi. Let's get your ride looking right.
+            Drop by our shop in Hawthorne, CA for expert window tinting
+            services. Let's get your car looking right.
           </p>
         </div>
 
@@ -186,10 +187,11 @@ const Map = () => {
       {/* Title Section */}
       <div className="text-center mb-8">
         <h2 className="text-6xl font-bold mb-4 text-white">
-          Visit OzWindow Tint
+          Visit OzWindowTint - Your Local Window Tinting Experts
         </h2>
         <p className="text-lg text-white/80 max-w-2xl mx-auto">
-          Drop by. Say hi. Let's get your ride looking right.
+          Drop by our shop in Hawthorne, CA for expert window tinting services.
+          Let's get your car, home, or business looking right.
         </p>
       </div>
 

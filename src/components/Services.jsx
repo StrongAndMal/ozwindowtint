@@ -39,10 +39,11 @@ const Services = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-slide-up">
           <h2 className="text-6xl font-bold mb-6 text-foreground">
-            What Our Products Can Do for You
+            Our Window Tinting Services
           </h2>
           <p className="text-lg text-white/80 max-w-3xl mx-auto">
-            We use industry-leading films to deliver clean installs that last.
+            We use industry-leading window films to deliver clean, long-lasting
+            tint installations for cars.
           </p>
         </div>
 
