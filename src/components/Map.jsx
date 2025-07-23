@@ -74,6 +74,41 @@ const Map = () => {
           // Removed styles property - use Google Cloud Console for map styling when using mapId
         });
 
+        // Create info window content
+        const infoWindowContent = `
+          <div class="p-4 max-w-xs">
+            <h3 class="font-bold text-lg text-gray-900 mb-2">${businessName}</h3>
+            <p class="text-gray-700 text-sm">${businessAddress}</p>
+            <div class="mt-2">
+              <a href="https://maps.google.com/?q=${encodeURIComponent(
+                businessName
+              )}" 
+                 target="_blank" 
+                 class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                Get Directions →
+              </a>
+            </div>
+          </div>
+        `;
+
+        const infoWindow = new google.maps.InfoWindow({
+          content: infoWindowContent,
+        });
+
+        // Create custom marker with initial position
+        const marker = new AdvancedMarkerElement({
+          position,
+          map,
+          title: businessName,
+        });
+
+        // Add click listener to marker
+        marker.addListener("click", () => {
+          // Open Google Maps with business name for better search results
+          const businessSearchUrl = `https://maps.google.com/?q=${encodeURIComponent(businessName)}`;
+          window.open(businessSearchUrl, "_blank", "noopener,noreferrer");
+        });
+
         // Use Places API to find the exact business location
         const placesService = new PlacesService(map);
         const request = {
@@ -100,41 +135,6 @@ const Map = () => {
           } else {
             console.log("Using fallback coordinates for business location");
           }
-        });
-
-        // Create info window content
-        const infoWindowContent = `
-          <div class="p-4 max-w-xs">
-            <h3 class="font-bold text-lg text-gray-900 mb-2">${businessName}</h3>
-            <p class="text-gray-700 text-sm">${businessAddress}</p>
-            <div class="mt-2">
-              <a href="https://maps.google.com/?q=${encodeURIComponent(
-                businessName
-              )}" 
-                 target="_blank" 
-                 class="text-blue-600 hover:text-blue-800 text-sm font-medium">
-                Get Directions →
-              </a>
-            </div>
-          </div>
-        `;
-
-        const infoWindow = new google.maps.InfoWindow({
-          content: infoWindowContent,
-        });
-
-        // Create custom marker
-        const marker = new AdvancedMarkerElement({
-          position,
-          map,
-          title: businessName,
-        });
-
-        // Add click listener to marker
-        marker.addListener("click", () => {
-          // Open Google Maps with business name for better search results
-          const businessSearchUrl = `https://maps.google.com/?q=${encodeURIComponent(businessName)}`;
-          window.open(businessSearchUrl, "_blank", "noopener,noreferrer");
         });
 
         // Center map on window resize
