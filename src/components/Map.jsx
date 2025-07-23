@@ -13,6 +13,7 @@ const Map = () => {
 
       // Get environment variables with better fallbacks
       const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+      // Use exact coordinates for OzWindowTint at 13791 Hawthorne Blvd, Hawthorne, CA 90250
       const latitude = parseFloat(import.meta.env.VITE_LATITUDE) || 33.9165;
       const longitude =
         parseFloat(import.meta.env.VITE_LONGITUDE) || -118.3523;
@@ -22,17 +23,17 @@ const Map = () => {
         "13791 Hawthorne Blvd, Hawthorne, CA 90250";
 
       // Debug logging for development
-      if (import.meta.env.DEV) {
-        console.log("Map Debug Info:", {
-          hasApiKey: !!apiKey,
-          apiKeyLength: apiKey?.length,
-          latitude,
-          longitude,
-          businessName,
-          businessAddress,
-          environment: import.meta.env.MODE,
-        });
-      }
+      console.log("Map Debug Info:", {
+        hasApiKey: !!apiKey,
+        apiKeyLength: apiKey?.length,
+        latitude,
+        longitude,
+        businessName,
+        businessAddress,
+        environment: import.meta.env.MODE,
+        VITE_LATITUDE: import.meta.env.VITE_LATITUDE,
+        VITE_LONGITUDE: import.meta.env.VITE_LONGITUDE,
+      });
 
       if (!apiKey) {
         setError(
@@ -55,7 +56,9 @@ const Map = () => {
         // Use Places API to find the exact business location
         const { PlacesService } = await loader.importLibrary("places");
         
-        const position = { lat: latitude, lng: longitude };
+        // Use exact coordinates for OzWindowTint business location
+        const position = { lat: 33.9165, lng: -118.3523 };
+        console.log("Using hardcoded position for OzWindowTint:", position);
 
         // Ensure map element is ready
         if (!mapRef.current) {
@@ -116,10 +119,15 @@ const Map = () => {
           fields: ['geometry', 'name', 'formatted_address']
         };
 
+        console.log("Searching for business location with query:", request.query);
         placesService.findPlaceFromQuery(request, (results, status) => {
+          console.log("Places API response:", { status, resultsCount: results?.length, results });
+          
           if (status === google.maps.places.PlacesServiceStatus.OK && results && results[0]) {
             const place = results[0];
             const exactPosition = place.geometry.location;
+            
+            console.log("Found place:", place.name, "at coordinates:", exactPosition.lat(), exactPosition.lng());
             
             // Position map slightly above the business location for better view
             const offsetPosition = {
@@ -127,12 +135,16 @@ const Map = () => {
               lng: exactPosition.lng()
             };
             
+            console.log("Setting map center to:", offsetPosition);
+            console.log("Setting marker position to:", { lat: exactPosition.lat(), lng: exactPosition.lng() });
+            
             // Update map center to offset position and marker to exact location
             map.setCenter(offsetPosition);
             marker.setPosition(exactPosition);
             
-            console.log("Found exact business location:", place.name, exactPosition.lat(), exactPosition.lng());
+            console.log("Map and marker positions updated successfully");
           } else {
+            console.log("Places API failed or no results found. Status:", status);
             console.log("Using fallback coordinates for business location");
           }
         });
