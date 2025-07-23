@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { fetchGoogleReviews } from "../lib/fetchGoogleReviews";
 
-// Use business name and address for more reliable Google Maps URL
+// Use the most reliable Google Maps URL format for business location and reviews
 const BUSINESS_NAME = "OzWindowTint";
 const BUSINESS_ADDRESS = "13791 Hawthorne Blvd, Hawthorne, CA 90250";
-const GOOGLE_REVIEW_URL = `https://www.google.com/maps/place/${encodeURIComponent(BUSINESS_NAME + " " + BUSINESS_ADDRESS)}`;
+const GOOGLE_REVIEW_URL = `https://maps.google.com/?q=${encodeURIComponent(BUSINESS_NAME + " " + BUSINESS_ADDRESS)}`;
 
 const ReviewCard = ({ review }) => {
   const handleClick = () => {
