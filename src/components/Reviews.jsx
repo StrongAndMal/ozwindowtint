@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { fetchGoogleReviews } from "../lib/fetchGoogleReviews";
 
-const PLACE_ID = "ChIJHyPYLKe1woARQQmf_-r9FYU"; // Replace with your real Place ID
-const GOOGLE_REVIEW_URL = `https://www.google.com/maps/place/?q=place_id=${PLACE_ID}`;
+// Use business name and address for more reliable Google Maps URL
+const BUSINESS_NAME = "OzWindowTint";
+const BUSINESS_ADDRESS = "13791 Hawthorne Blvd, Hawthorne, CA 90250";
+const GOOGLE_REVIEW_URL = `https://www.google.com/maps/place/${encodeURIComponent(BUSINESS_NAME + " " + BUSINESS_ADDRESS)}`;
 
 const ReviewCard = ({ review }) => {
   const handleClick = () => {
