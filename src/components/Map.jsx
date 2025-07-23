@@ -86,8 +86,14 @@ const Map = () => {
             const place = results[0];
             const exactPosition = place.geometry.location;
             
-            // Update map center and marker to exact location
-            map.setCenter(exactPosition);
+            // Position map slightly above the business location for better view
+            const offsetPosition = {
+              lat: exactPosition.lat() + 0.001, // Move map slightly north
+              lng: exactPosition.lng()
+            };
+            
+            // Update map center to offset position and marker to exact location
+            map.setCenter(offsetPosition);
             marker.setPosition(exactPosition);
             
             console.log("Found exact business location:", place.name, exactPosition.lat(), exactPosition.lng());
@@ -103,7 +109,7 @@ const Map = () => {
             <p class="text-gray-700 text-sm">${businessAddress}</p>
             <div class="mt-2">
               <a href="https://maps.google.com/?q=${encodeURIComponent(
-                businessAddress
+                businessName
               )}" 
                  target="_blank" 
                  class="text-blue-600 hover:text-blue-800 text-sm font-medium">
@@ -126,7 +132,9 @@ const Map = () => {
 
         // Add click listener to marker
         marker.addListener("click", () => {
-          infoWindow.open(map, marker);
+          // Open Google Maps with business name for better search results
+          const businessSearchUrl = `https://maps.google.com/?q=${encodeURIComponent(businessName)}`;
+          window.open(businessSearchUrl, "_blank", "noopener,noreferrer");
         });
 
         // Center map on window resize
