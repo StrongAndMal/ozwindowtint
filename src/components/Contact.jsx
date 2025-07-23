@@ -10,6 +10,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import emailjs from "@emailjs/browser";
+import Popup from "./Popup";
+
+const EMAILJS_SERVICE_ID = "service_et4dteq"; // Updated EmailJS Service ID
+const EMAILJS_TEMPLATE_ID = "template_d6im237"; // Updated EmailJS Template ID
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -21,6 +26,8 @@ const Contact = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [popup, setPopup] = useState({ type: "", message: "" });
+  const [isSending, setIsSending] = useState(false);
 
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -41,19 +48,54 @@ const Contact = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setPopup({ type: "", message: "" });
     if (!validateForm()) {
       return;
     }
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      serviceType: "",
-      additionalDetails: "",
-    });
-    setErrors({});
+    setIsSending(true);
+    // Only allow dropdown menu choices for serviceType
+    const serviceTypeMap = {
+      automotive: "Nano Carbon Puremax Automotive Tint",
+      residential: "FXtreme2 Series – Nano Ceramic Film Automotive Tint",
+    };
+    const allowedServiceType = serviceTypeMap[formData.serviceType] || "";
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          serviceType: allowedServiceType,
+          additionalDetails: formData.additionalDetails,
+        },
+        "tZvOx-O3XbaXEIhRf" // Your public key
+      );
+      setPopup({
+        type: "success",
+        message: "Your quote request has been sent.",
+      });
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        serviceType: "",
+        additionalDetails: "",
+      });
+      setErrors({});
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      setPopup({
+        type: "error",
+        message:
+          "Sorry, there was an error sending your request. Please try again later.",
+      });
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -216,9 +258,15 @@ const Contact = () => {
                     type="submit"
                     size="lg"
                     className="px-12 hover:scale-105 transition-all duration-300 py-4 text-lg bg-white text-gray-900  font-semibold"
+                    disabled={isSending}
                   >
-                    Get My Free Quote
+                    {isSending ? "Sending..." : "Get My Free Quote"}
                   </Button>
+                  <Popup
+                    type={popup.type}
+                    message={popup.message}
+                    onClose={() => setPopup({ type: "", message: "" })}
+                  />
                   <p className="text-xs sm:text-sm text-white/80 mt-4 break-words max-w-full">
                     We typically respond within 2-4 hours during business hours
                   </p>
