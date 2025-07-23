@@ -13,9 +13,9 @@ const Map = () => {
 
       // Get environment variables with better fallbacks
       const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
-      const latitude = parseFloat(import.meta.env.VITE_LATITUDE) || 33.9065352;
+      const latitude = parseFloat(import.meta.env.VITE_LATITUDE) || 33.9165;
       const longitude =
-        parseFloat(import.meta.env.VITE_LONGITUDE) || -118.3522791;
+        parseFloat(import.meta.env.VITE_LONGITUDE) || -118.3523;
       const businessName = import.meta.env.VITE_BUSINESS_NAME || "OzWindowTint";
       const businessAddress =
         import.meta.env.VITE_BUSINESS_ADDRESS ||
@@ -52,6 +52,9 @@ const Map = () => {
         const { Map } = await loader.importLibrary("maps");
         const { AdvancedMarkerElement } = await loader.importLibrary("marker");
 
+        // Use Places API to find the exact business location
+        const { PlacesService } = await loader.importLibrary("places");
+        
         const position = { lat: latitude, lng: longitude };
 
         // Ensure map element is ready
@@ -69,6 +72,28 @@ const Map = () => {
           streetViewControl: false,
           fullscreenControl: true,
           // Removed styles property - use Google Cloud Console for map styling when using mapId
+        });
+
+        // Use Places API to find the exact business location
+        const placesService = new PlacesService(map);
+        const request = {
+          query: businessName + " " + businessAddress,
+          fields: ['geometry', 'name', 'formatted_address']
+        };
+
+        placesService.findPlaceFromQuery(request, (results, status) => {
+          if (status === google.maps.places.PlacesServiceStatus.OK && results && results[0]) {
+            const place = results[0];
+            const exactPosition = place.geometry.location;
+            
+            // Update map center and marker to exact location
+            map.setCenter(exactPosition);
+            marker.setPosition(exactPosition);
+            
+            console.log("Found exact business location:", place.name, exactPosition.lat(), exactPosition.lng());
+          } else {
+            console.log("Using fallback coordinates for business location");
+          }
         });
 
         // Create info window content
