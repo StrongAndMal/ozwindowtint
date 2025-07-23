@@ -53,8 +53,7 @@ const Map = () => {
         const { Map } = await loader.importLibrary("maps");
         const { AdvancedMarkerElement } = await loader.importLibrary("marker");
 
-        // Use Places API to find the exact business location
-        const { PlacesService } = await loader.importLibrary("places");
+
         
         // Use exact coordinates for OzWindowTint business location
         const position = { lat: 33.9165, lng: -118.3523 };
@@ -112,47 +111,25 @@ const Map = () => {
           window.open(businessSearchUrl, "_blank", "noopener,noreferrer");
         });
 
-        // Use Places API to find the exact business location
-        const placesService = new PlacesService(map);
-        const request = {
-          query: businessName + " " + businessAddress,
-          fields: ['geometry', 'name', 'formatted_address']
+        // Position map slightly above the business location for better view
+        const offsetPosition = {
+          lat: position.lat + 0.001, // Move map slightly north
+          lng: position.lng
         };
-
-        console.log("Searching for business location with query:", request.query);
-        placesService.findPlaceFromQuery(request, (results, status) => {
-          console.log("Places API response:", { status, resultsCount: results?.length, results });
-          
-          if (status === google.maps.places.PlacesServiceStatus.OK && results && results[0]) {
-            const place = results[0];
-            const exactPosition = place.geometry.location;
-            
-            console.log("Found place:", place.name, "at coordinates:", exactPosition.lat(), exactPosition.lng());
-            
-            // Position map slightly above the business location for better view
-            const offsetPosition = {
-              lat: exactPosition.lat() + 0.001, // Move map slightly north
-              lng: exactPosition.lng()
-            };
-            
-            console.log("Setting map center to:", offsetPosition);
-            console.log("Setting marker position to:", { lat: exactPosition.lat(), lng: exactPosition.lng() });
-            
-            // Update map center to offset position and marker to exact location
-            map.setCenter(offsetPosition);
-            marker.setPosition(exactPosition);
-            
-            console.log("Map and marker positions updated successfully");
-          } else {
-            console.log("Places API failed or no results found. Status:", status);
-            console.log("Using fallback coordinates for business location");
-          }
-        });
+        
+        console.log("Setting map center to:", offsetPosition);
+        console.log("Setting marker position to:", position);
+        
+        // Set map center to offset position and marker to exact location
+        map.setCenter(offsetPosition);
+        marker.setPosition(position);
+        
+        console.log("Map and marker positions set successfully");
 
         // Center map on window resize
         const handleResize = () => {
           google.maps.event.trigger(map, "resize");
-          map.setCenter(position);
+          map.setCenter(offsetPosition);
         };
 
         window.addEventListener("resize", handleResize);
