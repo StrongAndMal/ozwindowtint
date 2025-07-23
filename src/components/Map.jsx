@@ -97,7 +97,19 @@ const Map = () => {
           content: infoWindowContent,
         });
 
-        // Create custom marker with initial position
+        // Position map slightly above the business location for better view
+        const offsetPosition = {
+          lat: position.lat + 0.001, // Move map slightly north
+          lng: position.lng
+        };
+        
+        console.log("Setting map center to:", offsetPosition);
+        console.log("Setting marker position to:", position);
+        
+        // Set map center to offset position
+        map.setCenter(offsetPosition);
+        
+        // Create custom marker with exact position
         const marker = new AdvancedMarkerElement({
           position,
           map,
@@ -110,19 +122,6 @@ const Map = () => {
           const businessSearchUrl = `https://maps.google.com/?q=${encodeURIComponent(businessName)}`;
           window.open(businessSearchUrl, "_blank", "noopener,noreferrer");
         });
-
-        // Position map slightly above the business location for better view
-        const offsetPosition = {
-          lat: position.lat + 0.001, // Move map slightly north
-          lng: position.lng
-        };
-        
-        console.log("Setting map center to:", offsetPosition);
-        console.log("Setting marker position to:", position);
-        
-        // Set map center to offset position and marker to exact location
-        map.setCenter(offsetPosition);
-        marker.setPosition(position);
         
         console.log("Map and marker positions set successfully");
 
