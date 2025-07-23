@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { fetchGoogleReviews } from "../lib/fetchGoogleReviews";
 
-const GOOGLE_REVIEW_URL = `https://www.google.com/maps/place/?q=place_id=${
-  import.meta.env.VITE_GOOGLE_PLACE_ID
-}`;
+const PLACE_ID = "ChIJHyPYLKe1woARQQmf_-r9FYU"; // Replace with your real Place ID
+const GOOGLE_REVIEW_URL = `https://www.google.com/maps/place/?q=place_id=${PLACE_ID}`;
 
 const ReviewCard = ({ review }) => {
   const handleClick = () => {
@@ -101,6 +100,9 @@ const Reviews = () => {
     getReviews();
   }, []);
 
+  // Duplicate reviews for seamless looping
+  const tickerReviews = [...reviews, ...reviews];
+
   return (
     <section className="py-20 bg-background relative overflow-hidden">
       {/* Background decorative elements */}
@@ -119,19 +121,34 @@ const Reviews = () => {
             services.
           </p>
         </div>
-        <div className="w-full max-w-7xl mx-auto">
+        <div className="w-full max-w-7xl mx-auto overflow-hidden">
           {loading && (
             <div className="text-center text-white/80">Loading reviews...</div>
           )}
           {error && <div className="text-center text-red-500">{error}</div>}
           {!loading && !error && reviews.length > 0 && (
-            <div className="flex overflow-x-auto gap-4 py-4 scrollbar-thin scrollbar-thumb-primary/30 scrollbar-track-transparent">
-              {reviews.map((review) => (
-                <ReviewCard
-                  key={review.time + review.author_name}
-                  review={review}
-                />
-              ))}
+            <div className="relative group" aria-live="polite">
+              <div
+                className="flex gap-4 py-4 ticker-animation group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused]"
+                style={{ minWidth: "100%" }}
+              >
+                {tickerReviews.map((review, idx) => (
+                  <ReviewCard
+                    key={idx + review.time + review.author_name}
+                    review={review}
+                  />
+                ))}
+              </div>
+              {/* Custom ticker animation keyframes */}
+              <style>{`
+                @keyframes ticker {
+                  0% { transform: translateX(0); }
+                  100% { transform: translateX(-50%); }
+                }
+                .ticker-animation {
+                  animation: ticker 40s linear infinite;
+                }
+              `}</style>
             </div>
           )}
           {!loading && !error && reviews.length === 0 && (
