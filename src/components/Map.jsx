@@ -36,7 +36,7 @@ const Map = () => {
 
       if (!apiKey) {
         setError(
-          "Google Maps API key is not configured. Please check your environment variables."
+          "Google Maps API key is not configured. Please check your environment variables (VITE_GOOGLE_MAPS_API_KEY)."
         );
         setIsLoading(false);
         return;
@@ -68,13 +68,7 @@ const Map = () => {
           mapTypeControl: false,
           streetViewControl: false,
           fullscreenControl: true,
-          styles: [
-            {
-              featureType: "poi",
-              elementType: "labels",
-              stylers: [{ visibility: "off" }],
-            },
-          ],
+          // Removed styles property - use Google Cloud Console for map styling when using mapId
         });
 
         // Create info window content
@@ -133,13 +127,16 @@ const Map = () => {
 
         if (error.message?.includes("RefererNotAllowedMapError")) {
           errorMessage =
-            "Domain not authorized for Google Maps API. Please check domain restrictions.";
+            "Domain not authorized for Google Maps API. Please check HTTP referrer restrictions in Google Cloud Console.";
         } else if (error.message?.includes("ApiNotActivatedMapError")) {
           errorMessage =
             "Google Maps API not activated. Please enable the Maps JavaScript API.";
         } else if (error.message?.includes("InvalidKeyMapError")) {
           errorMessage =
-            "Invalid Google Maps API key. Please check your configuration.";
+            "Invalid Google Maps API key. Please check your VITE_GOOGLE_MAPS_API_KEY configuration.";
+        } else if (error.message?.includes("ApiTargetBlockedMapError")) {
+          errorMessage =
+            "API key is blocked for this target. Please check API restrictions in Google Cloud Console.";
         }
 
         setError(errorMessage);
