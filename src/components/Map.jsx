@@ -3,69 +3,66 @@ import { Loader } from "@googlemaps/js-api-loader";
 
 const Map = () => {
   const mapRef = useRef(null);
+  const mapInstance = useRef(null);
+  const markerInstance = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [mapReady, setMapReady] = useState(false);
+
+  // Business coordinates - try both sets
+  const primaryLocation = { lat: 33.9165, lng: -118.3523 };
+  const alternativeLocation = { lat: 33.919434, lng: -118.353996 };
+  const businessName = "OzWindowTint";
+  const businessAddress = "13791 Hawthorne Blvd, Hawthorne, CA 90250";
 
   useEffect(() => {
     const initMap = async () => {
       setIsLoading(true);
       setError(null);
+      setMapReady(false);
 
-      // Get environment variables with better fallbacks
+      // Get environment variables
       const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
-      // Use exact coordinates for OzWindowTint at 13791 Hawthorne Blvd, Hawthorne, CA 90250
-      const latitude = parseFloat(import.meta.env.VITE_LATITUDE) || 33.9165;
-      const longitude =
-        parseFloat(import.meta.env.VITE_LONGITUDE) || -118.3523;
-      const businessName = import.meta.env.VITE_BUSINESS_NAME || "OzWindowTint";
-      const businessAddress =
-        import.meta.env.VITE_BUSINESS_ADDRESS ||
-        "13791 Hawthorne Blvd, Hawthorne, CA 90250";
 
-      // Debug logging for development
-      console.log("Map Debug Info:", {
-        hasApiKey: !!apiKey,
-        apiKeyLength: apiKey?.length,
-        latitude,
-        longitude,
-        businessName,
-        businessAddress,
-        environment: import.meta.env.MODE,
-        VITE_LATITUDE: import.meta.env.VITE_LATITUDE,
-        VITE_LONGITUDE: import.meta.env.VITE_LONGITUDE,
-      });
+      console.log("=== MAP INITIALIZATION START ===");
+      console.log("API Key available:", !!apiKey);
+      console.log("Primary location:", primaryLocation);
+      console.log("Alternative location:", alternativeLocation);
 
       if (!apiKey) {
-        setError(
-          "Google Maps API key is not configured. Please check your environment variables (VITE_GOOGLE_MAPS_API_KEY)."
-        );
+        setError("Google Maps API key is not configured. Please check VITE_GOOGLE_MAPS_API_KEY.");
         setIsLoading(false);
         return;
       }
 
+      // Ensure map element is ready
+      if (!mapRef.current) {
+        setError("Map container element not found");
+        setIsLoading(false);
+        return;
+      }
+
+      // Set explicit dimensions for map container
+      mapRef.current.style.width = "100%";
+      mapRef.current.style.height = "400px";
+      mapRef.current.style.minHeight = "400px";
+
       const loader = new Loader({
         apiKey,
         version: "weekly",
-        libraries: ["places"],
+        libraries: ["places", "marker"],
       });
 
       try {
+        console.log("Loading Google Maps libraries...");
         const { Map } = await loader.importLibrary("maps");
         const { AdvancedMarkerElement } = await loader.importLibrary("marker");
 
-
+        console.log("Creating map instance...");
         
-        // Use exact coordinates for OzWindowTint business location
-        const position = { lat: 33.9165, lng: -118.3523 };
-        console.log("Using hardcoded position for OzWindowTint:", position);
-
-        // Ensure map element is ready
-        if (!mapRef.current) {
-          throw new Error("Map element not found");
-        }
-
+        // Create map with explicit options
         const map = new Map(mapRef.current, {
-          center: position,
+          center: primaryLocation, // Start with primary location
           zoom: 15,
           mapId: "FULLSCREEN_MAP_ID",
           disableDefaultUI: false,
@@ -73,99 +70,135 @@ const Map = () => {
           mapTypeControl: false,
           streetViewControl: false,
           fullscreenControl: true,
-          // Removed styles property - use Google Cloud Console for map styling when using mapId
         });
 
-        // Create info window content
-        const infoWindowContent = `
-          <div class="p-4 max-w-xs">
-            <h3 class="font-bold text-lg text-gray-900 mb-2">${businessName}</h3>
-            <p class="text-gray-700 text-sm">${businessAddress}</p>
-            <div class="mt-2">
-              <a href="https://maps.google.com/?q=${encodeURIComponent(
-                businessName
-              )}" 
-                 target="_blank" 
-                 class="text-blue-600 hover:text-blue-800 text-sm font-medium">
-                Get Directions →
-              </a>
-            </div>
-          </div>
-        `;
+        mapInstance.current = map;
 
-        const infoWindow = new google.maps.InfoWindow({
-          content: infoWindowContent,
+        // Wait for map to be fully initialized before positioning
+        google.maps.event.addListenerOnce(map, 'idle', () => {
+          console.log("Map is idle - setting final position...");
+          setMapReady(true);
+          
+          // Try to position map with multiple methods
+          positionMap(map, primaryLocation);
         });
 
-        // Position map slightly above the business location for better view
-        const offsetPosition = {
-          lat: position.lat + 0.001, // Move map slightly north
-          lng: position.lng
-        };
-        
-        console.log("Setting map center to:", offsetPosition);
-        console.log("Setting marker position to:", position);
-        
-        // Set map center to offset position
-        map.setCenter(offsetPosition);
-        
-        // Create custom marker with exact position
-        const marker = new AdvancedMarkerElement({
-          position,
-          map,
-          title: businessName,
+        // Add error listener
+        google.maps.event.addListener(map, 'error', (error) => {
+          console.error("Map error:", error);
+          setError("Map encountered an error during initialization");
         });
-
-        // Add click listener to marker
-        marker.addListener("click", () => {
-          // Open Google Maps with business name for better search results
-          const businessSearchUrl = `https://maps.google.com/?q=${encodeURIComponent(businessName)}`;
-          window.open(businessSearchUrl, "_blank", "noopener,noreferrer");
-        });
-        
-        console.log("Map and marker positions set successfully");
-
-        // Center map on window resize
-        const handleResize = () => {
-          google.maps.event.trigger(map, "resize");
-          map.setCenter(offsetPosition);
-        };
-
-        window.addEventListener("resize", handleResize);
 
         setIsLoading(false);
 
-        // Cleanup
-        return () => {
-          window.removeEventListener("resize", handleResize);
-        };
       } catch (error) {
         console.error("Error loading Google Maps:", error);
-
-        // More specific error messages
-        let errorMessage =
-          "Failed to load Google Maps. Please check your internet connection.";
-
-        if (error.message?.includes("RefererNotAllowedMapError")) {
-          errorMessage =
-            "Domain not authorized for Google Maps API. Please check HTTP referrer restrictions in Google Cloud Console.";
-        } else if (error.message?.includes("ApiNotActivatedMapError")) {
-          errorMessage =
-            "Google Maps API not activated. Please enable the Maps JavaScript API.";
-        } else if (error.message?.includes("InvalidKeyMapError")) {
-          errorMessage =
-            "Invalid Google Maps API key. Please check your VITE_GOOGLE_MAPS_API_KEY configuration.";
-        } else if (error.message?.includes("ApiTargetBlockedMapError")) {
-          errorMessage =
-            "API key is blocked for this target. Please check API restrictions in Google Cloud Console.";
-        }
-
-        setError(errorMessage);
+        setError(`Failed to load Google Maps: ${error.message}`);
         setIsLoading(false);
       }
     };
 
+    const positionMap = (map, location) => {
+      console.log("Positioning map to:", location);
+      
+      try {
+        // Method 1: Set center with explicit zoom
+        map.setCenter(location);
+        map.setZoom(15);
+        
+        console.log("Map center set to:", map.getCenter().toJSON());
+        
+        // Method 2: Pan to location (alternative method)
+        setTimeout(() => {
+          map.panTo(location);
+          console.log("Map panned to:", map.getCenter().toJSON());
+        }, 100);
+
+        // Create marker at exact location
+        createMarker(map, location);
+        
+      } catch (error) {
+        console.error("Error positioning map:", error);
+        setError("Failed to position map correctly");
+      }
+    };
+
+    const createMarker = (map, location) => {
+      console.log("Creating marker at:", location);
+      
+      try {
+        // Create marker with exact position
+        const marker = new AdvancedMarkerElement({
+          position: location,
+          map: map,
+          title: businessName,
+        });
+
+        markerInstance.current = marker;
+
+        // Add click listener
+        marker.addListener("click", () => {
+          const businessSearchUrl = `https://maps.google.com/?q=${encodeURIComponent(businessName)}`;
+          window.open(businessSearchUrl, "_blank", "noopener,noreferrer");
+        });
+
+        console.log("Marker created successfully at:", location);
+        
+        // Verify marker position
+        setTimeout(() => {
+          const markerPosition = marker.position;
+          console.log("Marker position verified:", markerPosition);
+        }, 200);
+
+      } catch (error) {
+        console.error("Error creating marker:", error);
+        // Fallback to regular marker
+        createFallbackMarker(map, location);
+      }
+    };
+
+    const createFallbackMarker = (map, location) => {
+      console.log("Creating fallback marker at:", location);
+      
+      try {
+        const marker = new google.maps.Marker({
+          position: location,
+          map: map,
+          title: businessName,
+        });
+
+        markerInstance.current = marker;
+
+        marker.addListener("click", () => {
+          const businessSearchUrl = `https://maps.google.com/?q=${encodeURIComponent(businessName)}`;
+          window.open(businessSearchUrl, "_blank", "noopener,noreferrer");
+        });
+
+        console.log("Fallback marker created successfully");
+      } catch (error) {
+        console.error("Error creating fallback marker:", error);
+      }
+    };
+
+    // Test different positioning methods
+    const testAlternativeLocation = () => {
+      if (mapInstance.current && mapReady) {
+        console.log("Testing alternative location...");
+        positionMap(mapInstance.current, alternativeLocation);
+      }
+    };
+
+    // Add test function to window for debugging
+    window.testMapLocation = testAlternativeLocation;
+
     initMap();
+
+    // Cleanup
+    return () => {
+      if (mapInstance.current) {
+        google.maps.event.clearInstanceListeners(mapInstance.current);
+      }
+    };
   }, []);
 
   if (error) {
@@ -193,6 +226,15 @@ const Map = () => {
             <div className="text-sm text-gray-500">
               <p>📍 13791 Hawthorne Blvd, Hawthorne, CA 90250</p>
               <p>📞 (323) 485-2615</p>
+            </div>
+            {/* Debug buttons */}
+            <div className="mt-4 space-x-2">
+              <button 
+                onClick={() => window.testMapLocation?.()}
+                className="px-3 py-1 bg-blue-500 text-white rounded text-xs"
+              >
+                Test Alt Location
+              </button>
             </div>
           </div>
         </div>
@@ -225,7 +267,27 @@ const Map = () => {
             </div>
           </div>
         )}
-        <div ref={mapRef} className="w-full h-full" />
+        
+        {/* Map Container */}
+        <div 
+          ref={mapRef} 
+          className="w-full h-full"
+          style={{ minHeight: '400px' }}
+        />
+        
+        {/* Debug Info (only in development) */}
+        {import.meta.env.DEV && mapReady && (
+          <div className="absolute top-2 left-2 bg-black bg-opacity-75 text-white p-2 rounded text-xs">
+            <div>Map Ready: {mapReady ? '✅' : '❌'}</div>
+            <div>Center: {mapInstance.current?.getCenter()?.toJSON()?.lat?.toFixed(6)}, {mapInstance.current?.getCenter()?.toJSON()?.lng?.toFixed(6)}</div>
+            <button 
+              onClick={() => window.testMapLocation?.()}
+              className="mt-1 px-2 py-1 bg-blue-500 rounded text-xs"
+            >
+              Test Alt Location
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
