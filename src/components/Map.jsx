@@ -56,7 +56,17 @@ const Map = () => {
       try {
         console.log("Loading Google Maps libraries...");
         const { Map } = await loader.importLibrary("maps");
-        const { AdvancedMarkerElement } = await loader.importLibrary("marker");
+        
+        // Try to load AdvancedMarkerElement, fallback to regular Marker if needed
+        let AdvancedMarkerElement;
+        try {
+          const markerLibrary = await loader.importLibrary("marker");
+          AdvancedMarkerElement = markerLibrary.AdvancedMarkerElement;
+          console.log("AdvancedMarkerElement loaded successfully");
+        } catch (markerError) {
+          console.log("AdvancedMarkerElement not available, will use fallback marker");
+          AdvancedMarkerElement = null;
+        }
 
         console.log("Creating map instance...");
         
@@ -80,7 +90,7 @@ const Map = () => {
           setMapReady(true);
           
           // Try to position map with multiple methods
-          positionMap(map, primaryLocation);
+          positionMap(map, primaryLocation, AdvancedMarkerElement);
         });
 
         // Add error listener
@@ -98,7 +108,7 @@ const Map = () => {
       }
     };
 
-    const positionMap = (map, location) => {
+    const positionMap = (map, location, AdvancedMarkerElement) => {
       console.log("Positioning map to:", location);
       
       try {
@@ -115,7 +125,7 @@ const Map = () => {
         }, 100);
 
         // Create marker at exact location
-        createMarker(map, location);
+        createMarker(map, location, AdvancedMarkerElement);
         
       } catch (error) {
         console.error("Error positioning map:", error);
@@ -123,38 +133,44 @@ const Map = () => {
       }
     };
 
-    const createMarker = (map, location) => {
+    const createMarker = (map, location, AdvancedMarkerElement) => {
       console.log("Creating marker at:", location);
       
-      try {
-        // Create marker with exact position
-        const marker = new AdvancedMarkerElement({
-          position: location,
-          map: map,
-          title: businessName,
-        });
+      // Check if AdvancedMarkerElement is available
+      if (AdvancedMarkerElement) {
+        try {
+          // Create advanced marker with exact position
+          const marker = new AdvancedMarkerElement({
+            position: location,
+            map: map,
+            title: businessName,
+          });
 
-        markerInstance.current = marker;
+          markerInstance.current = marker;
 
-        // Add click listener
-        marker.addListener("click", () => {
-          const businessSearchUrl = `https://maps.google.com/?q=${encodeURIComponent(businessName)}`;
-          window.open(businessSearchUrl, "_blank", "noopener,noreferrer");
-        });
+          // Add click listener
+          marker.addListener("click", () => {
+            const businessSearchUrl = `https://maps.google.com/?q=${encodeURIComponent(businessName)}`;
+            window.open(businessSearchUrl, "_blank", "noopener,noreferrer");
+          });
 
-        console.log("Marker created successfully at:", location);
-        
-        // Verify marker position
-        setTimeout(() => {
-          const markerPosition = marker.position;
-          console.log("Marker position verified:", markerPosition);
-        }, 200);
-
-      } catch (error) {
-        console.error("Error creating marker:", error);
-        // Fallback to regular marker
-        createFallbackMarker(map, location);
+          console.log("Advanced marker created successfully at:", location);
+          
+          // Verify marker position
+          setTimeout(() => {
+            const markerPosition = marker.position;
+            console.log("Marker position verified:", markerPosition);
+          }, 200);
+          
+          return; // Success, exit function
+        } catch (error) {
+          console.error("Error creating advanced marker:", error);
+        }
       }
+      
+      // Fallback to regular marker
+      console.log("Using fallback marker (regular Google Maps Marker)");
+      createFallbackMarker(map, location);
     };
 
     const createFallbackMarker = (map, location) => {
@@ -184,7 +200,8 @@ const Map = () => {
     const testAlternativeLocation = () => {
       if (mapInstance.current && mapReady) {
         console.log("Testing alternative location...");
-        positionMap(mapInstance.current, alternativeLocation);
+        // Use regular marker for test to avoid scope issues
+        positionMap(mapInstance.current, alternativeLocation, null);
       }
     };
 
