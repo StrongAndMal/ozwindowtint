@@ -72,7 +72,7 @@ const Contact = () => {
           serviceType: allowedServiceType,
           additionalDetails: formData.additionalDetails,
         },
-        "tZvOx-O3XbaXEIhRf" // Your public key
+        "BBO7-jmH06p58GrsA" // Replace with your new EmailJS Public Key
       );
       setPopup({
         type: "success",
@@ -88,6 +88,14 @@ const Contact = () => {
       setErrors({});
     } catch (error) {
       console.error("EmailJS error:", error);
+      console.error("Service ID:", EMAILJS_SERVICE_ID);
+      console.error("Template ID:", EMAILJS_TEMPLATE_ID);
+      console.error("Public Key:", "tZvOx-O3XbaXEIhRf");
+      console.error("Error details:", {
+        text: error.text,
+        status: error.status,
+        response: error.response,
+      });
       setPopup({
         type: "error",
         message:
