@@ -13,8 +13,8 @@ import {
 import emailjs from "@emailjs/browser";
 import Popup from "./Popup";
 
-const EMAILJS_SERVICE_ID = "service_et4dteq"; // Updated EmailJS Service ID
-const EMAILJS_TEMPLATE_ID = "template_d6im237"; // Updated EmailJS Template ID
+const EMAILJS_SERVICE_ID = "service_nxg9kpb"; // Updated EmailJS Service ID
+const EMAILJS_TEMPLATE_ID = "template_pw7tzyh"; // Updated EmailJS Template ID
 
 const Contact = () => {
   const [formData, setFormData] = useState({
